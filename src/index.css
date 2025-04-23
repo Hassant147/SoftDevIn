@@ -1,0 +1,372 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* index.css - Performance Optimized */
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+/* Reduced scroll snapping which can cause performance issues */
+@media (min-width: 1200px) {
+  .scroll-container {
+    scroll-snap-type: y proximity; /* Changed from mandatory to proximity for better performance */
+    overflow-y: scroll;
+    height: 100vh;
+  }
+
+  .scroll-section {
+    scroll-snap-align: start;
+    height: 100vh;
+    width: 100%;
+  }
+}
+
+/* Simplified gradient animation with reduced keyframes */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite; /* Slowed down animation */
+}
+  
+/* Example Background Pattern - removed heavy SVG data URI */
+.bg-pattern {
+  background-color: #f5f5f5;
+}
+  
+/* Simplified and less resource-intensive animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Reduced animation complexity */
+.animate-float {
+  animation: float 15s ease-in-out infinite; /* Slowed down */
+}
+
+.animate-float-reverse {
+  animation: float-reverse 18s ease-in-out infinite; /* Slowed down */
+}
+
+/* Simplified gradient animation */
+@keyframes gradient-animation {
+  0%, 100% {
+    background: linear-gradient(90deg, #004aad, #cb6ce6);
+  }
+  50% {
+    background: linear-gradient(90deg, #5de0e6, #8028ff);
+  }
+}
+  
+.animate-gradient-x {
+  animation: gradient-animation 15s ease infinite; /* Slowed down */
+}
+
+/* Simplified slow float animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+  
+@keyframes float-slower {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+}
+  
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+.animate-float-slower {
+  animation: float-slower 10s ease-in-out infinite;
+}
+
+/* FOOTER - simplified animations */
+.footer-container {
+  position: relative;
+  background: #000;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Disable glow animations on mobile and lower-end devices */
+@media (max-width: 1024px) {
+  .animated-border-box, .animated-border-box-glow,
+  .glow-border-box, .glow-border-glow {
+    animation: none !important;
+  }
+  
+  .animated-border-box:before, .animated-border-box-glow:before,
+  .glow-border-box:before, .glow-border-glow:before,
+  .animated-border-box:after, .glow-border-box:after {
+    display: none !important;
+  }
+}
+
+/* Keep the rest of the CSS but reduce animation complexity where possible */
+
+/* =============for pricing cards================ */
+
+/* Glowing Border Container */
+.glow-border-container {
+    position: relative;
+    background: #ffffff; /* Card background color */
+    border-radius: 10px; /* Match the card's border radius */
+    overflow: hidden; /* Prevent border glow from overflowing */
+}
+
+/* Glowing Border Elements */
+.glow-border-box, .glow-border-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px; /* Match the container's border radius */
+    pointer-events: none; /* Allow interactions with card content */
+    z-index: 0;
+}
+
+.glow-border-glow {
+    filter: blur(20px);
+    z-index: -1;
+}
+
+.glow-border-box:before, .glow-border-glow:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-image: conic-gradient(
+        rgba(0, 0, 0, 0),
+        #3b82f6, /* Blue */
+        #8b5cf6, /* Purple */
+        #ec4899, /* Pink */
+        rgba(0, 0, 0, 0) 25%
+    );
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: rotate 4s linear infinite;
+    z-index: -2;
+}
+
+.glow-border-box:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    background: #ffffff; /* Inner background color */
+    border-radius: 7px;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    100% {
+        transform: translate(-50%, -50%) rotate(1turn);
+    }
+}
+
+/* Ensure body has no margin */
+body {
+    margin: 0;
+}
+
+/* ==============title================== */
+/* Container for the unique title */
+/* Reset for box-sizing */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Center container styling */
+  .hover-stretch-container {
+    display: grid;
+    place-items: start; /* Align items to the top-left corner */
+    width: 100%; /* Take full width of the screen */
+  }
+  
+  /* Main title styles */
+  .hover-stretch-title {
+    --color-one: hsl(210 80% 50%);
+    --color-two: hsl(320 100% 75%);
+    --stretch-multiplier: 5;
+    font-size: clamp(1.5rem, 9vmin, 6rem); /* Reduced font size */
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    display: grid;
+    line-height: 1.2; /* Adjusted line height for better spacing */
+    gap: 0.2ch;
+    text-align: left; /* Align text to the left */
+    position: relative;
+    justify-items: start; /* Align text content to the left */
+  }
+  
+  /* Screen-reader-only text */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  /* Visually hidden span */
+  [aria-hidden] {
+    display: flex;
+    gap: 0.02ch;
+    align-items: center;
+    color: black;
+  }
+  
+  /* Stretch effect on the 'O' */
+  .stretch-o {
+    --color-one: hsl(210, 80%, 50%);
+    --color-two: hsl(320, 100%, 75%);
+
+    height: 1.12ch;
+    width: calc(var(--stretch) * 1.16ch);
+    translate: 0 -0.01ch;
+    border: 0.25ch solid transparent; /* Transparent border required */
+    border-radius: 1ch;
+    transition: width 0.2s ease-in-out;
+    position: relative;
+
+    /* Gradient Border */
+    background: linear-gradient(var(--color-one), var(--color-two)) border-box;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+  
+  .hover-stretch-title {
+    --stretch: 1; /* Default stretch value */
+  }
+  
+  /* Hover effect */
+  .hover-stretch-title:hover {
+    --stretch: var(--stretch-multiplier);
+  }
+  
+  .stretch-o:after,
+  .stretch-o:before {
+    content: "";
+    border: 0.25ch solid var(--color);
+    position: absolute;
+    inset: -0.25ch;
+    border-radius: 1ch;
+    opacity: calc(-1 + var(--stretch));
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .stretch-o:before {
+    --color: var(--color-one);
+  }
+  
+  .stretch-o:after {
+    --color: var(--color-two);
+    mask: radial-gradient(circle at top left, black, transparent);
+  }
+  
+/* Add subtle responsiveness */
+@media (max-width: 768px) {
+  .hover-stretch-title {
+    font-size: clamp(1.5rem, 10vmin, 6rem); /* Increased font size */
+  }
+
+  /* Apply gradient text effect for screens 768px and below */
+  .hover-stretch-title.gradient-text {
+    background: linear-gradient(90deg, #5de0e6, #8028ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@media (max-width: 480px) {
+  .hover-stretch-title {
+    font-size: clamp(1.8rem, 12vmin, 7rem); /* Further increased font size */
+  }
+
+  /* Apply gradient text effect for screens 480px and below */
+  .hover-stretch-title.gradient-text {
+    background: linear-gradient(90deg, #5de0e6, #8028ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+  
+  /* title for contact */
+
+  /* 2. Blinking Cursor */
+.blinking-cursor {
+    animation: blink 1.5s step-end infinite; /* Slowed down */
+  }
+  
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  /* 3. Optional: Pulsating Shadow for Subheading */
+  @keyframes shadow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+  }
+  
+  .pulsating-shadow {
+    animation: shadow-pulse 4s ease-in-out infinite; /* Slowed down */
+  }
+  
+
+
+
+
+
+
+
+  
