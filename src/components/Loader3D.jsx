@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+// import { Canvas, useFrame } from '@react-three/fiber';
 
 const Loader3D = () => {
   const [loadingProgress, setLoadingProgress] = useState(0);
