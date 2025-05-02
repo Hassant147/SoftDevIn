@@ -40,27 +40,12 @@ const Contact = () => {
   return (
     <motion.section
       id="contact"
-      className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 flex flex-col justify-center items-center overflow-hidden"
+      className="section-container section-gradient-1 flex flex-col justify-center items-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
       style={{ minHeight: '80vh' }}
     >
-      {/* Swapped in: Clients' original gradient */}
-      <div
-        className="
-          absolute 
-          inset-0 
-          z-[-2]
-          bg-gradient-to-r 
-          from-pink-500 
-          via-blue-500 
-          to-purple-500
-          animate-gradient-x
-          opacity-20
-        "
-      />
-
       <div className="pointer-events-none absolute w-full h-full top-0 left-0 overflow-hidden z-[-1]">
         <motion.div
           className="
@@ -98,8 +83,7 @@ const Contact = () => {
 
       <div
         className="
-          relative 
-          w-[90%] 
+          content-container 
           flex 
           flex-col 
           lg:flex-row 
@@ -116,29 +100,15 @@ const Contact = () => {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h1
-            className="
-              font-bold 
-              text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
-              lg:leading-[80px] md:leading-[60px] sm:leading-[40px] leading-[40px] 
-              font-ubuntu 
-              relative 
-              inline-block 
-              text-left 
-              transition-transform 
-              duration-1000
-            "
-          >
-            <span className='relative text-transparent bg-clip-text bg-gradient-to-r from-[#5de0e6] to-[#8028ff] animated-gradient'>
-              Let’s Build Something{' '}
-              <span className='inline-block'>
-                {displayedText}
-                <span className="blinking-cursor">|</span>
-              </span>
+          <h1 className="section-title text-left">
+            Let's Build Something{' '}
+            <span className='inline-block'>
+              {displayedText}
+              <span className="blinking-cursor">|</span>
             </span>
           </h1>
-          <p className="text-white text-base font-bold sm:text-lg md:text-xl drop-shadow-[0_2px_3px_rgba(0,0,0,0.7)] leading-relaxed">
-            Have an idea or a vision? Let’s bring it to life. Contact us and let’s create something that truly stands out.
+          <p className="text-slate-700 leading-relaxed font-medium">
+            Have an idea or a vision? Let's bring it to life. Contact us and let's create something that truly stands out.
           </p>
         </motion.div>
 
@@ -161,14 +131,7 @@ const Contact = () => {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h2
-            className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold font-ubuntu text-center"
-            style={{
-              background: 'linear-gradient(90deg, #004aad, #cb6ce6)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
+          <h2 className="section-title">
             Contact Us
           </h2>
 
@@ -180,12 +143,12 @@ const Contact = () => {
                 px-4 sm:px-6 md:px-8 
                 py-2 sm:py-4 md:py-6 
                 rounded-lg 
-                font-ubuntu 
                 text-white
                 placeholder-gray-400
                 focus:outline-none
                 focus:ring-2
                 focus:ring-limegreen
+                font-ubuntu text-md
               "
               type="text"
               placeholder="Your Full Name"
@@ -198,15 +161,15 @@ const Contact = () => {
                   px-4 sm:px-6 md:px-8 
                   py-2 sm:py-4 md:py-6 
                   rounded-lg 
-                  font-ubuntu 
                   text-white
                   placeholder-gray-400
                   focus:outline-none
                   focus:ring-2
                   focus:ring-limegreen
+                  font-ubuntu text-md
                 "
                 type="email"
-                placeholder="Your Email"
+                placeholder="Email Address"
               />
               <input
                 className="
@@ -215,31 +178,56 @@ const Contact = () => {
                   px-4 sm:px-6 md:px-8 
                   py-2 sm:py-4 md:py-6 
                   rounded-lg 
-                  font-ubuntu 
                   text-white
                   placeholder-gray-400
                   focus:outline-none
                   focus:ring-2
                   focus:ring-limegreen
+                  font-ubuntu text-md
                 "
-                type="number"
-                placeholder="Mobile Number"
+                type="tel"
+                placeholder="Phone Number"
               />
             </div>
-            <textarea
-              rows="4"
+            <select
               className="
                 w-full 
                 bg-slate-900 
                 px-4 sm:px-6 md:px-8 
                 py-2 sm:py-4 md:py-6 
                 rounded-lg 
-                font-ubuntu 
                 text-white
                 placeholder-gray-400
                 focus:outline-none
                 focus:ring-2
                 focus:ring-limegreen
+                appearance-none
+                font-ubuntu text-md
+              "
+            >
+              <option value="" disabled selected>Select Service</option>
+              <option value="web">Web Development</option>
+              <option value="mobile">Mobile App Development</option>
+              <option value="ui">UI/UX Design</option>
+              <option value="data">Data Analytics</option>
+              <option value="seo">SEO Services</option>
+              <option value="other">Other</option>
+            </select>
+            <textarea
+              className="
+                w-full 
+                bg-slate-900 
+                px-4 sm:px-6 md:px-8 
+                py-2 sm:py-4 md:py-6 
+                rounded-lg 
+                text-white
+                placeholder-gray-400
+                focus:outline-none
+                focus:ring-2
+                focus:ring-limegreen
+                min-h-[120px]
+                resize-none
+                font-ubuntu text-md
               "
               placeholder="Your Message"
             ></textarea>
@@ -250,19 +238,18 @@ const Contact = () => {
                 w-full 
                 rounded-md 
                 font-bold 
-                text-md sm:text-lg 
-                font-ubuntu 
                 bg-gradient-to-r 
                 from-[#004aad] 
                 to-[#cb6ce6] 
                 text-white 
-                hover:from-[#5de0e6] 
-                hover:to-[#8028ff]
-                transition-colors duration-300
+                hover:shadow-lg
+                transition-shadow
+                duration-300
+                font-ubuntu
               "
-              aria-label="Submit Contact Form"
+              type="submit"
             >
-              Submit Now
+              Send Message
             </button>
           </div>
         </motion.div>

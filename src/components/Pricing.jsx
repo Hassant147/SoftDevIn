@@ -50,20 +50,20 @@ const PricingCard = ({ item }) => {
             {/* Card Content */}
             <div className="relative z-10 w-full">
                 {/* Service Type */}
-                <h1 className='text-black text-xl sm:text-2xl font-semibold font-ubuntu'>{item.type}</h1>
+                <h1 className="text-black font-semibold">{item.type}</h1>
 
                 {/* Service Description */}
-                <p className='text-gray-600 text-sm sm:text-base font-ubuntu mt-4'>{item.about}</p>
+                <p className="text-gray-600 mt-4">{item.about}</p>
 
                 {/* Specs */}
-                <p className='text-gray-600 text-sm sm:text-base font-semibold font-ubuntu mt-4'>{item.specs}</p>
+                <p className="text-gray-600 font-semibold mt-4">{item.specs}</p>
 
                 {/* Features List */}
-                <div className='flex flex-col justify-center items-start gap-4 mt-4 w-full flex-grow'>
+                <div className="flex flex-col justify-center items-start gap-4 mt-4 w-full flex-grow">
                     {item.features.map((feature, idx) => (
                         <div
                             key={idx}
-                            className='text-gray-600 flex justify-start items-center gap-4 font-ubuntu text-sm sm:text-base'
+                            className="text-gray-600 flex justify-start items-center gap-4"
                         >
                             <span className="inline-flex items-center">
                                 <GradientIcon size={20} enableRotate={false} className="mr-2">
@@ -111,28 +111,28 @@ const StaffAugmentationCard = () => {
                     </GradientIcon>
                 </span>
 
-                <h1 className='text-gray-800 text-2xl sm:text-3xl font-semibold font-ubuntu text-left mt-4'>
+                <h1 className="text-gray-800 font-semibold text-left mt-4">
                     {staffAugmentation.type}
                 </h1>
 
-                <p className='text-gray-600 text-sm sm:text-base font-ubuntu mt-4 text-left'>
+                <p className="text-gray-600 mt-4 text-left">
                     {staffAugmentation.about}
                 </p>
 
-                <p className='text-gray-600 text-sm sm:text-base font-semibold font-ubuntu mt-4 text-left'>
+                <p className="text-gray-600 font-semibold mt-4 text-left">
                     {staffAugmentation.specs}
                 </p>
 
                 {/* Features List */}
-                <div className='flex flex-col justify-center items-start gap-3 mt-4'>
+                <div className="flex flex-col justify-center items-start gap-3 mt-4">
                     {staffAugmentation.features.map((feature, idx) => (
-                        <div key={idx} className='flex items-center gap-3'>
+                        <div key={idx} className="flex items-center gap-3">
                             <span className="inline-flex items-center">
                                 <GradientIcon size={20} enableRotate={false} className="mr-2">
                                     <FaChevronCircleRight />
                                 </GradientIcon>
                             </span>
-                            <span className='text-gray-700 text-sm sm:text-base'>{feature}</span>
+                            <span className="text-gray-700">{feature}</span>
                         </div>
                     ))}
                 </div>
@@ -148,34 +148,23 @@ const Pricing = () => {
 
     return (
         <motion.section
-            id='pricing'
-            className=" relative w-full py-12 sm:py-16 md:py-20 lg:py-24 flex flex-col items-center overflow-hidden"
+            id="pricing"
+            className="section-container section-gradient-1"
         >
-            {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20 z-[-1]"></div>
-
-            {/* Section Content */}
-            <div className="relative w-[90%] flex flex-col items-center">
+            <div className="content-container flex flex-col items-center">
                 {/* Section Title */}
-                <h1
-                    className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-ubuntu text-center"
-                    style={{
-                        background: 'linear-gradient(90deg, #004aad, #cb6ce6)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                    }}
-                >
+                <h1 className="section-title">
                     Tailored IT Solutions for Every Business Need
                 </h1>
 
                 {/* Pricing Plans Section */}
-                <div className='w-full flex flex-col items-center mt-10'>
-                    <h3 className='text-xl sm:text-2xl md:text-3xl font-semibold mb-8 font-ubuntu text-center'>
+                <div className="w-full flex flex-col items-center mt-10">
+                    <h3 className="sub-section-title mb-8">
                         Our Pricing Plans
                     </h3>
 
                     {/* Pricing Cards (Appear Immediately) */}
-                    <div className='w-full flex lg:flex-row flex-col justify-center items-stretch gap-10'>
+                    <div className="w-full flex lg:flex-row flex-col justify-center items-stretch gap-10">
                         {pricingPlans.map((item, index) => (
                             <PricingCard key={index} item={item} />
                         ))}
@@ -183,13 +172,13 @@ const Pricing = () => {
                 </div>
 
                 {/* Staff Augmentation Section */}
-                <div className='w-full flex flex-col items-center mt-24'>
-                    <h3 className='text-xl sm:text-2xl md:text-3xl font-semibold mb-8 font-ubuntu text-center'>
+                <div className="w-full flex flex-col items-center mt-24">
+                    <h3 className="sub-section-title mb-8">
                         Staff Augmentation
                     </h3>
 
                     {/* Staff Augmentation Card (Appears Immediately) */}
-                    <div className='w-full flex justify-center'>
+                    <div className="w-full flex justify-center">
                         <StaffAugmentationCard />
                     </div>
                 </div>

@@ -363,10 +363,127 @@ body {
   }
   
 
+/* Typography Standardization */
+:root {
+  /* Font families */
+  --font-primary: 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
+  /* Font sizes */
+  --heading-1: clamp(2.5rem, 5vw, 3.5rem);  /* Main section headings */
+  --heading-2: clamp(2rem, 4vw, 2.75rem);   /* Sub-section headings */
+  --heading-3: clamp(1.5rem, 3vw, 2rem);    /* Card headings */
+  --text-xl: clamp(1.25rem, 2vw, 1.5rem);   /* Large text */
+  --text-lg: clamp(1.125rem, 1.5vw, 1.25rem); /* Medium-large text */
+  --text-md: clamp(1rem, 1.2vw, 1.125rem);  /* Medium text (base) */
+  --text-sm: clamp(0.875rem, 1vw, 1rem);    /* Small text */
+  --text-xs: clamp(0.75rem, 0.8vw, 0.875rem); /* Extra small text */
+  
+  /* Font weights */
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  /* Line heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-loose: 1.8;
+  
+  /* Standard gradient for section titles */
+  --primary-gradient: linear-gradient(90deg, #004aad, #cb6ce6);
 
+  /* Standard spacing system */
+  --section-padding-y: clamp(3rem, 8vh, 6rem); /* Vertical padding for sections */
+  --container-width: 90%; /* Standard width for content containers */
+  --content-spacing: 2rem; /* Space between content blocks */
+  --title-spacing: 1.5rem; /* Space after section titles */
+  --element-spacing: 1rem; /* Space between elements within a block */
+  --section-spacing: 4rem; /* Space between sections */
+  
+  /* Section background gradients */
+  --gradient-1: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+  --gradient-2: linear-gradient(to right, rgba(236, 72, 153, 0.1), rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+}
 
+/* Apply base typography */
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-md);
+  line-height: var(--line-height-normal);
+  color: #333;
+  background-color: #ffffff;
+}
 
+/* Standardized heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-bold);
+}
 
+/* Standard section title styling */
+.section-title {
+  font-size: var(--heading-1);
+  font-weight: var(--font-bold);
+  text-align: center;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  margin-bottom: var(--title-spacing);
+}
 
+/* Standard sub-section title styling */
+.sub-section-title {
+  font-size: var(--heading-2);
+  font-weight: var(--font-semibold);
+  text-align: center;
+  margin-bottom: var(--title-spacing);
+}
 
+/* Paragraph styling */
+p {
+  line-height: var(--line-height-normal);
+  color: #4B5563; /* gray-600 */
+  margin-bottom: var(--element-spacing);
+}
+
+/* Button text styling */
+button, .btn {
+  font-family: var(--font-primary);
+  font-weight: var(--font-semibold);
+}
+
+/* Standard section layout class */
+.section-container {
+  position: relative;
+  width: 100%;
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+  overflow: hidden;
+}
+
+/* Section background classes */
+.section-white {
+  background-color: transparent;
+}
+
+.section-gradient-1 {
+  background: var(--gradient-1);
+}
+
+.section-gradient-2 {
+  background: var(--gradient-2);
+}
+
+/* Standard section content container */
+.content-container {
+  position: relative;
+  width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 10;
+}
   

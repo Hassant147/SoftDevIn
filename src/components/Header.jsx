@@ -54,7 +54,7 @@ const Header = () => {
               key={path}
               to={path}
               spy={true}
-              smooth={true}
+              smooth={false}
               offset={-80}
               className="
                 font-ubuntu
@@ -217,7 +217,7 @@ const Header = () => {
                 key={path}
                 to={path}
                 spy={true}
-                smooth={true}
+                smooth={false}
                 offset={-60}
                 className="
                   text-white

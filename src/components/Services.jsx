@@ -77,36 +77,16 @@ const Services = () => {
     return (
         <section
             id="services"
-            className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 flex flex-col items-center overflow-hidden"
+            className="section-container section-gradient-2"
         >
-            {/* Swapped Background Gradient from About Section */}
-            <div
-                className="
-                    absolute 
-                    inset-0 
-                    z-[-2]
-                    bg-gradient-to-r 
-                    from-pink-500 
-                    via-blue-500 
-                    to-purple-500
-                    animate-gradient-x
-                    opacity-20
-                "
-            />
-
-            <div className="relative w-[90%] flex flex-col items-center overflow-hidden">
+            <div className="content-container flex flex-col items-center">
                 {/* Section Title */}
                 <motion.h1
                     data-aos="fade-down"
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
-                    className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 font-ubuntu text-center"
-                    style={{
-                        background: 'linear-gradient(90deg, #004aad, #cb6ce6)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                    }}
+                    className="section-title"
                 >
                     Our Services
                 </motion.h1>
@@ -117,7 +97,7 @@ const Services = () => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-8 text-center"
+                    className="max-w-2xl mx-auto mb-8 text-center"
                 >
                     At SoftDevIn, we offer a wide range of IT and digital solutions tailored
                     to your business needs. Explore our services designed to help you excel
@@ -143,24 +123,14 @@ const Services = () => {
                                     </GradientIcon>
 
                                     {/* Service Title */}
-                                    <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 text-gray-800 font-ubuntu text-center">
+                                    <h2 className="font-semibold mb-2 text-gray-800 text-center">
                                         {item.title}
                                     </h2>
 
                                     {/* Service Description */}
-                                    <p className="text-xs sm:text-sm md:text-base text-gray-700 mb-4 leading-relaxed text-center">
+                                    <p className="mb-4 leading-relaxed text-center">
                                         {item.about}
                                     </p>
-
-                                    {/* Read More Button */}
-                                    {/* <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="inline-flex items-center text-blue-600 font-bold hover:underline mt-auto"
-                                    >
-                                        {item.label}
-                                        <FaArrowRight className="ml-1" />
-                                    </motion.button> */}
                                 </motion.div>
                             </div>
                         ))}
@@ -183,10 +153,8 @@ const Services = () => {
                     ))}
                 </div>
             </div>
-
         </section>
     );
-
 };
 
 export default Services;

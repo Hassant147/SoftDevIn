@@ -1,5 +1,5 @@
 // src/components/CanvasScene.jsx (Optimized for Performance)
-import React, { useRef, useEffect, useState, useMemo } from 'react';
+import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
@@ -41,13 +41,39 @@ const CanvasScene = ({ isInHero, scrollProgress, rotationSpeed }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [reducedQuality, setReducedQuality] = useState(false);
   const [hasRendered, setHasRendered] = useState(false);
+  const [idleTime, setIdleTime] = useState(0);
+  const lastActivityRef = useRef(Date.now());
+  const canvasRef = useRef();
+  
+  // Function to measure idle time and pause rendering if inactive
+  const checkIdleStatus = useCallback(() => {
+    const now = Date.now();
+    const timeSinceLastActivity = now - lastActivityRef.current;
+    setIdleTime(timeSinceLastActivity);
+    
+    // If idle for more than 30 seconds, don't refresh the scene as often
+    if (canvasRef.current && timeSinceLastActivity > 30000) {
+      // Slow down frame rate when idle
+      canvasRef.current.style.opacity = "0.3";
+    } else if (canvasRef.current) {
+      canvasRef.current.style.opacity = "1";
+    }
+  }, []);
+  
+  // Reset idle timer when user interacts
+  const resetIdleTimer = useCallback(() => {
+    lastActivityRef.current = Date.now();
+    if (canvasRef.current) {
+      canvasRef.current.style.opacity = "1";
+    }
+  }, []);
 
   // Detect Mobile Device and set quality
   useEffect(() => {
     const checkDevice = () => {
       const isMobileView = window.innerWidth < 768;
       // Be more aggressive about reducing quality
-      const shouldReduceQuality = window.innerWidth < 1400 || 
+      const shouldReduceQuality = window.innerWidth < 1200 || 
                                  !window.navigator.hardwareConcurrency || 
                                  window.navigator.hardwareConcurrency <= 6;
       setIsMobile(isMobileView);
@@ -64,14 +90,49 @@ const CanvasScene = ({ isInHero, scrollProgress, rotationSpeed }) => {
   // After first render, mark as rendered to avoid double rendering 
   useEffect(() => {
     setHasRendered(true);
+    
+    // Setup idle timer and activity tracking
+    const idleInterval = setInterval(checkIdleStatus, 5000);
+    
+    const userActivityEvents = [
+      'mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll', 'wheel'
+    ];
+    
+    const handleUserActivity = throttle(resetIdleTimer, 200);
+    
+    userActivityEvents.forEach(eventType => {
+      window.addEventListener(eventType, handleUserActivity, { passive: true });
+    });
+    
+    return () => {
+      clearInterval(idleInterval);
+      userActivityEvents.forEach(eventType => {
+        window.removeEventListener(eventType, handleUserActivity);
+      });
+    };
+  }, [checkIdleStatus, resetIdleTimer]);
+
+  // Force garbage collection and cleanup when component unmounts
+  useEffect(() => {
+    return () => {
+      // Force garbage collection of 3D resources
+      if (window.gc) window.gc();
+      
+      // Clear any cached resources
+      THREE.Cache.clear();
+    };
   }, []);
 
   // Disable Canvas for Mobile to Improve Performance
   if (isMobile) return null;
+  
+  // Reduce frame rate when idle for 30+ seconds
+  const frameloop = idleTime > 30000 ? 'demand' : 'always';
 
   return (
     <ErrorBoundary>
       <div
+        ref={canvasRef}
         className={`fixed -top-40 lg:-top-20 z-[-1] h-full w-full transition-all duration-1000 ${
           isInHero ? 'right-0 w-1/2' : 'left-1/2 transform -translate-x-1/2 w-full'
         }`}
@@ -88,15 +149,32 @@ const CanvasScene = ({ isInHero, scrollProgress, rotationSpeed }) => {
               stencil: false,
               precision: reducedQuality ? 'lowp' : 'mediump',
             }}
-            dpr={reducedQuality ? 0.7 : 1}
-            performance={{ min: 0.3 }}
-            onCreated={({ gl }) => {
+            dpr={reducedQuality ? 0.6 : 0.8} // Further reduce resolution
+            performance={{ min: 0.2 }}
+            frameloop={frameloop}
+            onCreated={({ gl, scene }) => {
               gl.dispose = function() {
                 console.log('Manually disposing WebGL context');
                 this.forceContextLoss();
                 this.context = null;
                 this.domElement = null;
               };
+              
+              // Explicitly clean up scene when page unloads
+              window.addEventListener('beforeunload', () => {
+                scene.traverse((object) => {
+                  if (object.geometry) object.geometry.dispose();
+                  if (object.material) {
+                    if (Array.isArray(object.material)) {
+                      object.material.forEach(material => material.dispose());
+                    } else {
+                      object.material.dispose();
+                    }
+                  }
+                });
+                scene.dispose();
+                gl.dispose();
+              });
             }}
           >
             <ParallaxCamera />
@@ -108,14 +186,15 @@ const CanvasScene = ({ isInHero, scrollProgress, rotationSpeed }) => {
               rotationSpeed={rotationSpeed} 
               scrollProgress={scrollProgress} 
               reducedQuality={reducedQuality}
+              idleTime={idleTime}
             />
-            {!reducedQuality && (
+            {!reducedQuality && idleTime < 10000 && (
               <EffectComposer enabled={!reducedQuality}>
                 <Bloom 
                   luminanceThreshold={0} 
                   luminanceSmoothing={0.9} 
-                  height={300} 
-                  opacity={0.6} 
+                  height={200} // Reduced from 300
+                  opacity={0.5} // Reduced from 0.6
                 />
               </EffectComposer>
             )}
@@ -126,7 +205,7 @@ const CanvasScene = ({ isInHero, scrollProgress, rotationSpeed }) => {
   );
 };
 
-const RotatingIcosahedron = ({ rotationSpeed, scrollProgress, reducedQuality }) => {
+const RotatingIcosahedron = ({ rotationSpeed, scrollProgress, reducedQuality, idleTime }) => {
   const meshRef = useRef();
   const startColor = useMemo(() => new THREE.Color('#8028ff'), []); // Purple
   const endColor = useMemo(() => new THREE.Color('#ffa400'), []);   // Orange
@@ -153,13 +232,23 @@ const RotatingIcosahedron = ({ rotationSpeed, scrollProgress, reducedQuality }) 
 
   useFrame((state, delta) => {
     if (!meshRef.current) return;
+    
+    // If idle for long periods, reduce animation frequency drastically
+    if (idleTime > 30000) {
+      // Only update occasionally when idle
+      if (Math.random() > 0.9) {
+        meshRef.current.rotation.x += delta * rotationSpeed * 0.2;
+        meshRef.current.rotation.y += delta * rotationSpeed * 0.2;
+      }
+      return;
+    }
 
     // Only update every few frames on low-end devices
-    const shouldUpdate = !reducedQuality || (state.clock.elapsedTime % 0.1 < delta);
+    const shouldUpdate = !reducedQuality || (state.clock.elapsedTime % 0.2 < delta);
     
     // Always rotate, but less frequently on low-end devices
-    meshRef.current.rotation.x += delta * rotationSpeed * (reducedQuality ? 0.5 : 1);
-    meshRef.current.rotation.y += delta * rotationSpeed * (reducedQuality ? 0.5 : 1);
+    meshRef.current.rotation.x += delta * rotationSpeed * (reducedQuality ? 0.4 : 0.8);
+    meshRef.current.rotation.y += delta * rotationSpeed * (reducedQuality ? 0.4 : 0.8);
 
     if (shouldUpdate) {
       // Interpolate scale based on scrollProgress (0 to 100)
@@ -185,13 +274,13 @@ const ParallaxCamera = () => {
 
   useFrame((state) => {
     // Throttle updates for better performance
-    if (state.clock.elapsedTime - lastUpdate.current < 0.1) return;
+    if (state.clock.elapsedTime - lastUpdate.current < 0.2) return; // Reduced from 0.1
     
     // Smooth parallax effect based on cursor movement
-    const maxOffset = 0.5; // Original value
+    const maxOffset = 0.3; // Reduced from 0.5
     target.current.x = mouse.x * maxOffset;
     target.current.y = mouse.y * maxOffset;
-    camera.position.lerp(target.current, 0.05); // Original value
+    camera.position.lerp(target.current, 0.03); // Reduced from 0.05
     camera.lookAt(0, 0, 0);
     
     lastUpdate.current = state.clock.elapsedTime;

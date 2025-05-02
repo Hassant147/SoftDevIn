@@ -27,19 +27,52 @@ const throttle = (callback, delay) => {
   };
 };
 
+// Debounce function to further reduce unnecessary calls
+const debounce = (func, wait) => {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
 const App = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isInHero, setIsInHero] = useState(true);
   const [timeDone, setTimeDone] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showCanvas, setShowCanvas] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   
   const heroRef = useRef(null);
   const MIN_LOADER_TIME = 2000;
 
-  // Initialize AOS once
+  // Check if tab is visible/hidden to save resources
   useEffect(() => {
-    AOS.init({ offset: 200, duration: 600, easing: 'ease-in-sine', once: true });
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden);
+    };
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  // Initialize AOS once, with reduced animation time
+  useEffect(() => {
+    AOS.init({ 
+      offset: 100, // Reduced from 200 
+      duration: 500, // Reduced from 600
+      easing: 'ease-in-sine', 
+      once: true, // Important to prevent re-animations
+      disable: 'mobile' // Disable on mobile for better performance
+    });
   }, []);
 
   // Detect device capabilities for performance optimization
@@ -59,7 +92,7 @@ const App = () => {
       setShowCanvas(!isMobileView && !isLowEndDevice);
     };
     
-    const throttledCheck = throttle(checkDevice, 200);
+    const throttledCheck = throttle(checkDevice, 500);
     checkDevice();
     
     window.addEventListener('resize', throttledCheck);
@@ -68,9 +101,9 @@ const App = () => {
 
   // Optimized Scroll Event Handler
   useEffect(() => {
-    if (isMobile) return; // Skip heavy calculations on mobile
+    if (isMobile || !isVisible) return; // Skip when mobile or tab not visible
 
-    // Create throttled handler to improve performance
+    // Use both throttle AND debounce for even better performance
     const handleScroll = throttle(() => {
       if (!heroRef.current) return;
   
@@ -80,15 +113,20 @@ const App = () => {
       // Update scroll progress for 3D object animation
       const totalScroll = document.body.scrollHeight - window.innerHeight;
       const overallProgress = Math.min((scrollTop / totalScroll) * 100, 100);
-      setScrollProgress(overallProgress);
       
-      // Check if still in Hero section
-      setIsInHero(scrollTop < heroHeight);
-    }, 100); // Throttle to max 10 updates per second
+      // Use RAF to optimize UI updates
+      requestAnimationFrame(() => {
+        setScrollProgress(overallProgress);
+        setIsInHero(scrollTop < heroHeight);
+      });
+    }, 150); // Even more throttling
+    
+    // Debounce for further optimization - this significantly reduces calls
+    const debouncedScroll = debounce(handleScroll, 50);
   
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobile]);  
+    window.addEventListener("scroll", debouncedScroll, { passive: true });
+    return () => window.removeEventListener("scroll", debouncedScroll);
+  }, [isMobile, isVisible]);  
 
   // Loader Timeout
   useEffect(() => {
@@ -111,6 +149,31 @@ const App = () => {
       window.removeEventListener('webglcontextlost', handleContextLost);
     };
   }, []);
+  
+  // Cleanup when window is hidden/inactive
+  useEffect(() => {
+    if (!isVisible && showCanvas) {
+      // Temporarily hide 3D scene when tab is not visible
+      const timer = setTimeout(() => {
+        if (!isVisible) setShowCanvas(false);
+      }, 10000); // Wait 10 seconds before disabling
+      
+      return () => clearTimeout(timer);
+    } else if (isVisible && !showCanvas && !isMobile) {
+      // Re-enable 3D scene when tab becomes visible again
+      const timer = setTimeout(() => {
+        const windowWidth = window.innerWidth;
+        const isLowEndDevice = 
+          !window.navigator.hardwareConcurrency || 
+          window.navigator.hardwareConcurrency <= 4 ||
+          windowWidth < 1024;
+          
+        setShowCanvas(isVisible && !isMobile && !isLowEndDevice);
+      }, 1000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, showCanvas, isMobile]);
 
   if (!timeDone) {
     return <Loader3D />;
@@ -127,11 +190,11 @@ const App = () => {
       </div>
 
       {/* Render 3D Scene Only for Non-Mobile Devices with capability check */}
-      {showCanvas && (
+      {showCanvas && isVisible && (
         <CanvasScene
           isInHero={isInHero}
           scrollProgress={scrollProgress}
-          rotationSpeed={0.1 + scrollProgress / 1000} // Restored original rotation speed
+          rotationSpeed={0.08 + scrollProgress / 2000} // Reduced speed
         />
       )}
 

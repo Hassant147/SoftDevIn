@@ -4,8 +4,9 @@ import React, { useEffect, useRef, Suspense } from 'react';
 import { FaExternalLinkAlt, FaGithub, FaTimes } from "react-icons/fa";
 import Slider from "react-slick";
 import { motion, AnimatePresence } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
+// Remove 3D imports
+// import { Canvas } from '@react-three/fiber';
+// import { OrbitControls, Stars } from '@react-three/drei';
 import { projectsInfo } from '../export'; // Ensure correct path
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -57,26 +58,11 @@ const Projects = () => {
     return (
         <motion.section
             id="projects"
-            className="relative w-full pb-12 sm:pb-16 md:pb-20 lg:pb-24 flex flex-col items-center overflow-hidden"
+            className="section-container section-gradient-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }} // Short fade in for entire section
         >
-            {/* Gradient BG (from Clients.jsx) */}
-            <div
-                className="
-          absolute 
-          inset-0 
-          z-[-2]
-          bg-gradient-to-r 
-          from-pink-500 
-          via-blue-500 
-          to-purple-500
-          animate-gradient-x
-          opacity-20
-        "
-            />
-
             {/* Floating Blobs */}
             <div className="pointer-events-none absolute w-full h-full top-0 left-0 overflow-hidden z-[-1]">
                 <motion.div
@@ -91,47 +77,26 @@ const Projects = () => {
                 />
             </div>
 
-            {/* Starry 3D Scene */}
-            <Canvas className="absolute inset-0 z-0">
-                <ambientLight intensity={0.1} />
-                <pointLight position={[10, 10, 10]} intensity={1} />
-                <Stars
-                    radius={200}
-                    depth={60}
-                    count={3000}
-                    factor={8}
-                    saturation={1}
-                    fade
-                    speed={1} // Subtle twinkle
-                />
-                <OrbitControls enableZoom={false} />
-            </Canvas>
-
             {/* Section Content */}
-            <div className="relative z-10 w-[90%] flex flex-col items-center">
+            <div className="content-container flex flex-col items-center">
                 {/* Title */}
                 <motion.h1
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-ubuntu text-center"
-                    style={{
-                        background: 'linear-gradient(90deg, #004aad, #cb6ce6)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                    }}
+                    className="section-title"
                 >
                     Our Stunning Projects
-        </motion.h1>
+                </motion.h1>
 
                 <motion.p
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="max-w-2xl mx-auto mt-2 text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-8 text-center"
+                    className="max-w-2xl mx-auto mt-2 mb-8 text-center"
                 >
                     Dive into some of our most innovative and visually captivating projects, showcasing our expertise.
-        </motion.p>
+                </motion.p>
 
                 {/* Projects Slider */}
                 <div className="w-full max-w-4xl mt-2">
@@ -144,21 +109,13 @@ const Projects = () => {
                                     whileTap={{ scale: 0.98 }}
                                     onClick={() => openDetail(project)}
                                 >
-                                    {/* 3D & Image */}
+                                    {/* Replace 3D with just image */}
                                     <div className="relative w-full h-60 sm:h-80 md:h-96 overflow-hidden">
-                                        <Canvas>
-                                            <ambientLight intensity={0.5} />
-                                            <pointLight position={[10, 10, 10]} intensity={1} />
-                                            <mesh rotation={[0, Math.PI / 4, 0]}>
-                                                <boxGeometry args={[1, 1, 1]} />
-                                                <meshStandardMaterial color="#8028ff" transparent opacity={0.1} />
-                                            </mesh>
-                                            <OrbitControls enableZoom={false} />
-                                        </Canvas>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20"></div>
                                         <img
                                             src={project.image}
                                             alt={project.title}
-                                            className="absolute top-0 left-0 w-full h-full object-cover opacity-70 transition-opacity duration-300 hover:opacity-100"
+                                            className="absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-300 hover:opacity-100"
                                             loading="lazy"
                                         />
                                     </div>
@@ -168,12 +125,12 @@ const Projects = () => {
 
                                     {/* Project Info */}
                                     <div className="absolute bottom-0 p-6">
-                                        <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                                        <p className="text-sm text-gray-300 mb-4">{project.description}</p>
+                                        <h3 className="font-semibold text-white mb-2">{project.title}</h3>
+                                        <p className="text-gray-300 mb-4">{project.description}</p>
                                         <div className="flex items-center justify-between">
                                             <div className="flex space-x-2">
                                                 {project.technologies.map((tech, i) => (
-                                                    <span key={i} className="text-white text-lg">
+                                                    <span key={i} className="text-white">
                                                         {tech}
                                                     </span>
                                                 ))}
@@ -220,88 +177,107 @@ const Projects = () => {
                                 scale: currentSlide === idx ? 1.25 : 1,
                             }}
                             transition={{ duration: 0.3 }}
-                        />
+                        ></motion.div>
                     ))}
                 </div>
             </div>
 
-            {/* Sidebar Panel */}
+            {/* Project Details Panel */}
             <AnimatePresence>
-                {isDetailOpen && selectedProject && (
+                {isDetailOpen && (
                     <motion.div
-                        initial={{ x: '100%', opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: '100%', opacity: 0 }}
-                        transition={{ type: 'tween', duration: 0.4 }}
-                        className="fixed top-0 right-0 w-full md:w-1/3 h-full bg-black/90 backdrop-blur-lg z-50 overflow-y-auto flex flex-col p-6"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                     >
-                        <button
-                            onClick={closeDetail}
-                            className="ml-auto text-gray-200 hover:text-limegreen mb-4"
-                            aria-label="Close Detail Panel"
+                        <motion.div
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: 50, opacity: 0 }}
+                            transition={{ type: 'spring', damping: 25 }}
+                            className="bg-white rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] shadow-2xl"
                         >
-                            <FaTimes size={24} />
-                        </button>
+                            {selectedProject && (
+                                <div className="flex flex-col h-full">
+                                    {/* Header with close button */}
+                                    <div className="flex justify-between items-center p-6 border-b">
+                                        <h3 className="font-bold">{selectedProject.title}</h3>
+                                        <button
+                                            onClick={closeDetail}
+                                            className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                                            aria-label="Close"
+                                        >
+                                            <FaTimes size={20} />
+                                        </button>
+                                    </div>
 
-                        <div className="flex flex-col gap-6">
-                            {/* 3D Box + Image */}
-                            <div className="w-full h-64 relative mb-4">
-                                <Canvas>
-                                    <ambientLight intensity={0.6} />
-                                    <pointLight position={[10, 10, 10]} intensity={1} />
-                                    <Suspense fallback={null}>
-                                        <mesh rotation={[0, Math.PI / 4, 0]}>
-                                            <boxGeometry args={[1.5, 1.5, 1.5]} />
-                                            <meshStandardMaterial color="#8028ff" transparent opacity={0.3} />
-                                        </mesh>
-                                        <OrbitControls enableZoom={false} />
-                                    </Suspense>
-                                </Canvas>
-                                <img
-                                    src={selectedProject.image}
-                                    alt={selectedProject.title}
-                                    className="absolute top-0 left-0 w-full h-full object-cover opacity-40 rounded-md"
-                                />
-                            </div>
+                                    {/* Content scrollable area */}
+                                    <div className="overflow-y-auto p-6">
+                                        <img
+                                            src={selectedProject.image}
+                                            alt={selectedProject.title}
+                                            className="w-full rounded-xl object-cover h-64 mb-6"
+                                        />
 
-                            {/* Details */}
-                            <h2 className="text-2xl font-bold text-white">{selectedProject.title}</h2>
-                            <p className="text-gray-200 leading-relaxed">
-                                {selectedProject.description}
-                            </p>
+                                        <div className="space-y-4">
+                                            <p>{selectedProject.fullDescription || selectedProject.description}</p>
 
-                            {/* Tech Badges */}
-                            <div className="flex items-center flex-wrap gap-3 mb-4">
-                                {selectedProject.technologies.map((tech, i) => (
-                                    <span
-                                        key={i}
-                                        className="bg-limegreen text-black px-3 py-1 rounded-full text-sm font-semibold"
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
+                                            <div>
+                                                <h4 className="font-semibold mb-2">Technologies</h4>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {selectedProject.technologies.map((tech, i) => (
+                                                        <span
+                                                            key={i}
+                                                            className="bg-gray-100 px-3 py-1 rounded-full text-sm"
+                                                        >
+                                                            {tech}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
 
-                            {/* Links */}
-                            <div className="flex space-x-4">
-                                <a
-                                    href={selectedProject.demoLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full hover:from-limegreen hover:to-purple-600 transition-colors duration-300"
-                                >
-                                    Live Demo <FaExternalLinkAlt className="ml-2" />
-                                </a>
-                                <a
-                                    href={selectedProject.repoLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors duration-300"
-                                >
-                                    GitHub <FaGithub className="ml-2" />
-                                </a>
-                            </div>
-                        </div>
+                                            <div>
+                                                <h4 className="font-semibold mb-2">Key Features</h4>
+                                                <ul className="list-disc list-inside space-y-1">
+                                                    {selectedProject.features?.map((feature, i) => (
+                                                        <li key={i}>{feature}</li>
+                                                    )) || (
+                                                            <li>Detailed information coming soon</li>
+                                                        )}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Footer with links */}
+                                    <div className="p-6 border-t mt-auto">
+                                        <div className="flex justify-between">
+                                            <span>Want to see it in action?</span>
+                                            <div className="space-x-4">
+                                                <a
+                                                    href={selectedProject.demoLink}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center text-blue-600 hover:underline"
+                                                >
+                                                    Live Demo <FaExternalLinkAlt className="ml-1" size={14} />
+                                                </a>
+                                                <a
+                                                    href={selectedProject.repoLink}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center text-blue-600 hover:underline"
+                                                >
+                                                    View Code <FaGithub className="ml-1" size={14} />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

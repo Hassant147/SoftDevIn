@@ -26,7 +26,7 @@ export default function FooterAnime() {
                             {/* 1) Left Column */}
                             <div>
                                 <h1 className="text-white text-3xl font-semibold mb-4">
-                                    Let’s Start Working Together
+                                    Let's Start Working Together
                                 </h1>
                                 <button
                                     className="
@@ -123,7 +123,7 @@ export default function FooterAnime() {
                     z-50
                 "
             >
-                <Link to="hero" spy={true} offset={-100} smooth={true}>
+                <Link to="hero" spy={true} offset={-100} smooth={false}>
                     <FaArrowUp className="w-6 h-6" />
                 </Link>
             </div>

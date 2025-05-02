@@ -55,11 +55,11 @@ const Hero = React.forwardRef(({ globalScrollProgress }, ref) => {
     };
 
     return (
-        <div className="w-full py-12 sm:py-16 md:py-20 lg:py-24">
+        <div className="section-container section-white">
             <section
                 id="hero"
                 ref={ref}
-                className="relative w-[90%] mx-auto lg:h-screen flex flex-col "
+                className="content-container flex flex-col"
             >
                 {/* HEADLINE with subtle upward movement */}
                 <div className="hover-stretch-container mb-8 sm:mb-14 lg:mb-20" style={headingStyle}>
