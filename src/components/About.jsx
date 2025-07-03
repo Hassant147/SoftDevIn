@@ -49,7 +49,7 @@ const About = () => {
         <section
             id="about"
             ref={sectionRef}
-            className="section-container section-gradient-1 glass-effect"
+            className="section-container section-gradient-2 glass-effect"
         >
             {/* Inner container */}
             <div className="content-container flex flex-col lg:flex-row justify-between items-center gap-8 sm:gap-10 md:gap-12 lg:gap-16">
@@ -81,7 +81,7 @@ const About = () => {
                         whileHover={{ scale: 1.05 }}
                         className="sub-section-title text-left font-ubuntu bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text"
                     >
-                        Revolutionizing the Digital World
+                        Enterprise Technology Excellence
                     </motion.h2>
 
                     {/* Description */}
@@ -93,7 +93,7 @@ const About = () => {
                         transition={{ duration: 1, delay: 0.6 }}
                         className="text-slate-700 text-left lg:text-left"
                     >
-                        Founded in May 2023, SoftDevIn is a global leader in software development, crafting cutting-edge digital solutions that empower businesses. With expertise in emerging technologies like AI, blockchain, and Web 3.0, we transform ideas into impactful realities.
+                        Established in 2023, SoftDevIn has rapidly emerged as a trusted technology partner for businesses across industries. Our team of certified engineers and consultants brings 50+ years of combined experience in enterprise software development, cloud architecture, and digital strategy. We've successfully delivered over 200 projects for clients ranging from Fortune 500 companies to innovative startups.
                     </motion.p>
 
                     {/* Features List */}
@@ -120,7 +120,7 @@ const About = () => {
                             >
                                 <FaChevronCircleRight className="text-white text-xs sm:text-sm" />
                             </div>
-                            Transforming businesses with innovative software solutions
+                            Enterprise software solutions with 99.9% uptime and scalability
                         </motion.li>
 
                         <motion.li
@@ -139,7 +139,7 @@ const About = () => {
                             >
                                 <FaChevronCircleRight className="text-white text-xs sm:text-sm" />
                             </div>
-                            Delivering digital strategies for growth and innovation
+                            Data-driven digital strategies yielding 40%+ ROI for clients
                         </motion.li>
 
                         <motion.li
@@ -158,7 +158,7 @@ const About = () => {
                             >
                                 <FaChevronCircleRight className="text-white text-xs sm:text-sm" />
                             </div>
-                            Expertise in design, branding, and digital experiences
+                            Award-winning UX/UI design enhancing user engagement by 35%
                         </motion.li>
 
                         <motion.li
@@ -177,7 +177,7 @@ const About = () => {
                             >
                                 <FaChevronCircleRight className="text-white text-xs sm:text-sm" />
                             </div>
-                            Building long-term partnerships with a client-first approach
+                            Strategic partnerships with 95% client retention rate
                         </motion.li>
                     </motion.ul>
                 </motion.div>

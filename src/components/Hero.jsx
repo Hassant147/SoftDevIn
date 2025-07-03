@@ -80,10 +80,25 @@ const Hero = React.forwardRef(({ globalScrollProgress }, ref) => {
                         isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                     }`}
                 >
-                    At SoftDevIn, we deliver end-to-end IT and digital solutions. From
-                    custom software development to emerging technologies and digital
-                    marketing, we ensure precision and professionalism in every project.
+                    At SoftDevIn, we deliver enterprise-grade software solutions and digital transformation services. 
+                    Our expertise spans custom development, AI integration, and strategic digital marketing, 
+                    helping businesses achieve measurable growth and operational excellence.
                 </p>
+                
+                {/* Added Call-to-Action for better conversion */}
+                <div 
+                    className={`mt-4 transition-all duration-700 ${
+                        isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                >
+                    <a 
+                        href="#contact" 
+                        className="inline-block px-6 py-3 bg-gradient-to-r from-[#004aad] to-[#cb6ce6] text-white font-medium rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300"
+                        aria-label="Discuss your project with our experts"
+                    >
+                        Discuss Your Project
+                    </a>
+                </div>
             </section>
         </div>
     );

@@ -5,37 +5,37 @@ import { FaCode, FaRobot, FaPaintBrush, FaCloud, FaUsers } from 'react-icons/fa'
 export const servicesinfo = [
   {
     icon: <FaCode />,
-    title: "Custom Software Development",
+    title: "Enterprise Software Development",
     about:
-      "Scalable, secure, and user-friendly web, mobile, and desktop applications tailored to your operational needs.",
+      "End-to-end custom application development with enterprise-grade security, 99.9% uptime guarantee, and seamless integration with your existing systems.",
     label: "Read More",
   },
   {
     icon: <FaRobot />,
-    title: "Advanced Technology Solutions",
+    title: "AI & Emerging Technology",
     about:
-      "Empowering your business with AI/ML, blockchain, AR/VR, Web 3.0, and automation technologies.",
+      "Implement cutting-edge AI/ML, blockchain, and IoT solutions that deliver measurable ROI, automate processes, and create new revenue opportunities.",
     label: "Read More",
   },
   {
     icon: <FaPaintBrush />,
-    title: "Digital Marketing & Design",
+    title: "Strategic Digital Marketing",
     about:
-      "Enhance your brand with social media management, SEO, engaging content, and stunning visuals.",
+      "Data-driven marketing strategies that increase conversions by an average of 35%, combining SEO, content marketing, and advanced analytics.",
     label: "Read More",
   },
   {
     icon: <FaCloud />,
-    title: "SaaS and ERP Solutions",
+    title: "Cloud & SaaS Solutions",
     about:
-      "Optimize your business processes with comprehensive SaaS platforms and ERP systems.",
+      "Scalable cloud architecture and SaaS platforms that reduce operational costs by up to 40% while enhancing security and business agility.",
     label: "Read More",
   },
   {
     icon: <FaUsers />,
-    title: "Team Augmentation",
+    title: "Expert Team Augmentation",
     about:
-      "Expand your team with skilled professionals and flexible engagement models.",
+      "Access to certified senior developers, designers, and engineers with specialized expertise, flexible engagement models, and rapid onboarding.",
     label: "Read More",
   },
 ];
@@ -102,7 +102,7 @@ export const pricingPlans = [
 
 export const staffAugmentation = {
   type: "Staff Augmentation",
-  about: "Hire experts to boost your team’s capabilities and meet goals.",
+  about: "Hire experts to boost your team's capabilities and meet goals.",
   specs: "Flexible and tailored resource engagements:",
   features: [
     "Frontend and backend development experts",
@@ -124,7 +124,7 @@ export const testidata = [
   {
     image: "https://randomuser.me/api/portraits/women/65.jpg",
     review:
-      "SoftDevIn’s attention to detail and design-thinking approach truly impressed us. The end result exceeded our expectations, and our customers consistently praise the new interface.",
+      "SoftDevIn's attention to detail and design-thinking approach truly impressed us. The end result exceeded our expectations, and our customers consistently praise the new interface.",
     name: "Lisa Chen",
     post: "Head of Product, UniCore Inc.",
   },
@@ -149,7 +149,7 @@ export const projectsInfo = [
     description:
       'Strapi is an open-source headless CMS built with Node.js. It offers a powerful API and intuitive admin panel for quickly creating and managing content.',
     image: 'https://images.unsplash.com/photo-1588618801953-5d13cc4175b3?ixlib=rb-4.0.3&q=80&w=1080',
-    technologies: [<FaNodeJs key="node" />, <FaDatabase key="db" />, <FaDocker key="docker" />],
+    technologies: ['Node.js', 'Database', 'Docker'],
     demoLink: 'https://strapi.io',
     repoLink: 'https://github.com/strapi/strapi',
   },
@@ -157,9 +157,9 @@ export const projectsInfo = [
     id: 2,
     title: 'Ghost Blogging Platform',
     description:
-      'Ghost is a modern open-source publishing platform focused on professional blogging. It’s built on Node.js and provides a clean, user-friendly interface.',
+      'Ghost is a modern open-source publishing platform focused on professional blogging. It\'s built on Node.js and provides a clean, user-friendly interface.',
     image: 'https://images.unsplash.com/photo-1571689936044-cb66ad395feb?ixlib=rb-4.0.3&q=80&w=1080',
-    technologies: [<FaNodeJs key="node" />, <FaDatabase key="db" />],
+    technologies: ['Node.js', 'Database'],
     demoLink: 'https://ghost.org/',
     repoLink: 'https://github.com/TryGhost/Ghost',
   },
@@ -169,7 +169,7 @@ export const projectsInfo = [
     description:
       'Rocket.Chat is an open-source team communication platform with features like real-time chat, video conferencing, and full customization, all self-hostable.',
     image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&q=80&w=1080',
-    technologies: [<FaNodeJs key="node" />, <FaDatabase key="db" />, <FaDocker key="docker" />],
+    technologies: ['Node.js', 'Database', 'Docker'],
     demoLink: 'https://cloud.rocket.chat/trial',
     repoLink: 'https://github.com/RocketChat/Rocket.Chat',
   },

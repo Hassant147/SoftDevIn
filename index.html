@@ -5,33 +5,89 @@
   <meta charset="UTF-8" />
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/src/assets/web-logo1.svg" />
+  <link rel="apple-touch-icon" href="/src/assets/web-logo1.svg">
   
   <!-- Responsive Design -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="SoftDevIn - Revolutionizing the Digital World with cutting-edge IT and digital solutions.">
-  <meta name="keywords" content="SoftDevIn, IT Solutions, Digital Transformation, AI, Blockchain, Web 3.0, Software Development, Digital Marketing">
-  <meta name="author" content="SoftDevIn Team">
-
-  <!-- Page Title -->
-  <title>SoftDevIn | Innovators in Digital Solutions</title>
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="SoftDevIn delivers enterprise-grade software development, AI solutions, and digital transformation services. Transform your business with our cutting-edge technology expertise.">
+  <meta name="keywords" content="Software Development, Digital Transformation, Enterprise Software, AI Solutions, Custom Web Development, Mobile App Development, Cloud Services, IT Consulting, Blockchain Solutions, SaaS Development, Web 3.0, Digital Marketing Strategy">
+  <meta name="author" content="SoftDevIn">
   
-  <!-- Fonts -->
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://softdevin.com/">
+  <meta property="og:title" content="SoftDevIn | Enterprise Software & Digital Transformation Experts">
+  <meta property="og:description" content="Transform your business with our cutting-edge software development, AI solutions, and digital services. Partner with SoftDevIn for innovation that delivers results.">
+  <meta property="og:image" content="/src/assets/og-image.jpg">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://softdevin.com/">
+  <meta property="twitter:title" content="SoftDevIn | Enterprise Software & Digital Transformation Experts">
+  <meta property="twitter:description" content="Transform your business with our cutting-edge software development, AI solutions, and digital services. Partner with SoftDevIn for innovation that delivers results.">
+  <meta property="twitter:image" content="/src/assets/og-image.jpg">
+  
+  <!-- Canonical URL to prevent duplicate content -->
+  <link rel="canonical" href="https://softdevin.com/" />
+
+  <!-- Page Title - Optimized for SEO -->
+  <title>SoftDevIn | Enterprise Software & Digital Transformation Experts</title>
+  
+  <!-- Fonts - Preloaded for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
   
   <!-- Global Styles -->
   <link rel="stylesheet" href="/src/index.css" />
+  
+  <!-- Structured Data for Rich Snippets -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SoftDevIn",
+      "url": "https://softdevin.com",
+      "logo": "https://softdevin.com/logo.png",
+      "description": "Enterprise software development and digital transformation experts.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Francisco",
+        "addressRegion": "CA",
+        "postalCode": "94103",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-415-555-0123",
+        "contactType": "customer service",
+        "email": "contact@softdevin.com"
+      },
+      "sameAs": [
+        "https://www.facebook.com/softdevin",
+        "https://www.linkedin.com/company/softdevin",
+        "https://twitter.com/softdevin"
+      ]
+    }
+  </script>
 </head>
 
 <body>
+  <!-- Skip to content for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only">Skip to content</a>
+  
   <!-- React Mounting Point -->
   <div id="root"></div>
   
   <!-- React Application -->
   <script type="module" src="/src/main.jsx"></script>
+  
+  <!-- Noscript Fallback -->
+  <noscript>
+    <p class="text-center p-4">Please enable JavaScript to view this website.</p>
+  </noscript>
 </body>
 
 </html>

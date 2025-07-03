@@ -101,14 +101,14 @@ const Contact = () => {
           viewport={{ once: true }}
         >
           <h1 className="section-title text-left">
-            Let's Build Something{' '}
+            Partner With Us For Results{' '}
             <span className='inline-block'>
               {displayedText}
               <span className="blinking-cursor">|</span>
             </span>
           </h1>
           <p className="text-slate-700 leading-relaxed font-medium">
-            Have an idea or a vision? Let's bring it to life. Contact us and let's create something that truly stands out.
+            Ready to transform your business with enterprise-grade technology solutions? Our experts will analyze your needs and develop a tailored strategy to achieve your business objectives.
           </p>
         </motion.div>
 
@@ -249,7 +249,7 @@ const Contact = () => {
               "
               type="submit"
             >
-              Send Message
+              Request Consultation
             </button>
           </div>
         </motion.div>

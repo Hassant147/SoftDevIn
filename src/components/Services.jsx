@@ -77,7 +77,7 @@ const Services = () => {
     return (
         <section
             id="services"
-            className="section-container section-gradient-2"
+            className="section-container section-gradient-1 glass-effect"
         >
             <div className="content-container flex flex-col items-center">
                 {/* Section Title */}

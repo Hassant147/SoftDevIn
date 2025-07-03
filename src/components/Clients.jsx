@@ -33,12 +33,11 @@ const Clients = () => {
     return (
         <motion.section
             id="testimonials"
-            className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 flex flex-col justify-center items-center overflow-hidden"
+            className="section-container section-gradient-2 glass-effect"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
         >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-x opacity-20 z-[-1]" />
 
             {!isLowEndDevice && (
             <div className="pointer-events-none absolute w-full h-full top-0 left-0 overflow-hidden z-[-1]">
@@ -77,7 +76,7 @@ const Clients = () => {
             </div>
             )}
 
-            <div className="w-full max-w-7xl px-4 sm:px-6 md:px-8 flex flex-col items-center gap-12">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center gap-12">
                 <div className="text-center flex flex-col gap-3 max-w-2xl mx-auto">
                     <h1
                         data-aos="fade-up"
@@ -106,6 +105,7 @@ const Clients = () => {
                     className="
             w-full
             max-w-2xl
+            mx-auto
             bg-white/30 
             backdrop-blur-md 
             rounded-xl 
