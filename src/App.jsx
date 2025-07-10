@@ -6,7 +6,7 @@ import Header from './components/Header';
 import CanvasScene from './components/CanvasScene';
 import Loader3D from './components/Loader3D';
 import TechStack from './components/TechStack';
-import CoreTeam from './components/CoreTeam';
+// import CoreTeam from './components/CoreTeam';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -208,7 +208,7 @@ const App = () => {
         <TechStack />
         <Pricing />
         <Projects />
-        <CoreTeam />
+        {/* <CoreTeam /> */}
         <Clients />
         <Contact />
         <Footer />

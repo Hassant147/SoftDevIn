@@ -19,7 +19,7 @@ const GradientIcon = ({ children, size = 60, enableRotate = true }) => {
 
     return (
         <div
-            className="flex items-center justify-center rounded-full mb-4 transition-transform duration-300 hover:scale-110"
+            className="flex items-center p-3 justify-center rounded-full mb-4 transition-transform duration-300 hover:scale-110"
             style={{
                 width: size,
                 height: size,
@@ -27,7 +27,7 @@ const GradientIcon = ({ children, size = 60, enableRotate = true }) => {
             }}
         >
             {React.cloneElement(children, {
-                size: size * 0.6,
+                size: size * 1,
                 color: 'white',
                 className: enableRotate ? 'transition-transform duration-300 hover:rotate-12' : '',
             })}
@@ -105,12 +105,12 @@ const Services = () => {
                 </motion.p>
 
                 {/* Services Slider */}
-                <div className="w-full mx-auto pb-10">
+                <div className="w-full mx-auto pb-10 ">
                     <Slider {...settings} ref={sliderRef}>
                         {servicesinfo.map((item, index) => (
                             <div key={index} className="px-2">
                                 <motion.div
-                                    className="bg-white/60 backdrop-blur-sm border border-white/30 rounded-3xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-between h-auto md:h-80 lg:h-74 w-full transition-transform duration-300 hover:scale-105"
+                                    className="bg-white/60 shadow-lg my-5  backdrop-blur-sm border border-white/30 rounded-3xl p-8 sm:py-10 sm:px-6 md:py-12 md:px-8 flex flex-col items-center justify-between h-auto md:h-96 lg:h-96 w-full transition-transform duration-300 hover:scale-105"
                                     data-aos="zoom-in-up"
                                     data-aos-delay={300 + index * 100} // Staggered animation delays
                                     initial={{ opacity: 0, y: 50 }}
@@ -128,7 +128,7 @@ const Services = () => {
                                     </h2>
 
                                     {/* Service Description */}
-                                    <p className="mb-4 leading-relaxed text-center">
+                                    <p className="mb-4 leading-relaxed text-center break-words w-full">
                                         {item.about}
                                     </p>
                                 </motion.div>
