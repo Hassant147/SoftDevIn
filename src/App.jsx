@@ -6,7 +6,7 @@ import Header from './components/Header';
 import CanvasScene from './components/CanvasScene';
 import Loader3D from './components/Loader3D';
 import TechStack from './components/TechStack';
-import CoreTeam from './components/CoreTeam';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -49,7 +49,7 @@ const App = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showCanvas, setShowCanvas] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  
+
   const heroRef = useRef(null);
   const MIN_LOADER_TIME = 2000;
 
@@ -58,9 +58,9 @@ const App = () => {
     const handleVisibilityChange = () => {
       setIsVisible(!document.hidden);
     };
-    
+
     document.addEventListener('visibilitychange', handleVisibilityChange);
-    
+
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
@@ -68,10 +68,10 @@ const App = () => {
 
   // Initialize AOS once, with reduced animation time
   useEffect(() => {
-    AOS.init({ 
+    AOS.init({
       offset: 100, // Reduced from 200 
       duration: 500, // Reduced from 600
-      easing: 'ease-in-sine', 
+      easing: 'ease-in-sine',
       once: true, // Important to prevent re-animations
       disable: 'mobile' // Disable on mobile for better performance
     });
@@ -82,21 +82,21 @@ const App = () => {
     const checkDevice = () => {
       const windowWidth = window.innerWidth;
       const isMobileView = windowWidth < 768;
-      
+
       // Check for low-end devices
-      const isLowEndDevice = 
-        !window.navigator.hardwareConcurrency || 
+      const isLowEndDevice =
+        !window.navigator.hardwareConcurrency ||
         window.navigator.hardwareConcurrency <= 4 ||
         windowWidth < 1024;
-      
+
       setIsMobile(isMobileView);
       // Only show Canvas on higher-end devices
       setShowCanvas(!isMobileView && !isLowEndDevice);
     };
-    
+
     const throttledCheck = throttle(checkDevice, 500);
     checkDevice();
-    
+
     window.addEventListener('resize', throttledCheck);
     return () => window.removeEventListener('resize', throttledCheck);
   }, []);
@@ -108,27 +108,27 @@ const App = () => {
     // Use both throttle AND debounce for even better performance
     const handleScroll = throttle(() => {
       if (!heroRef.current) return;
-  
+
       const heroHeight = heroRef.current.offsetHeight;
       const scrollTop = window.scrollY;
-  
+
       // Update scroll progress for 3D object animation
       const totalScroll = document.body.scrollHeight - window.innerHeight;
       const overallProgress = Math.min((scrollTop / totalScroll) * 100, 100);
-      
+
       // Use RAF to optimize UI updates
       requestAnimationFrame(() => {
         setScrollProgress(overallProgress);
         setIsInHero(scrollTop < heroHeight);
       });
     }, 150); // Even more throttling
-    
+
     // Debounce for further optimization - this significantly reduces calls
     const debouncedScroll = debounce(handleScroll, 50);
-  
+
     window.addEventListener("scroll", debouncedScroll, { passive: true });
     return () => window.removeEventListener("scroll", debouncedScroll);
-  }, [isMobile, isVisible]);  
+  }, [isMobile, isVisible]);
 
   // Loader Timeout
   useEffect(() => {
@@ -144,14 +144,14 @@ const App = () => {
       // Force disable 3D elements
       setShowCanvas(false);
     };
-    
+
     window.addEventListener('webglcontextlost', handleContextLost);
-    
+
     return () => {
       window.removeEventListener('webglcontextlost', handleContextLost);
     };
   }, []);
-  
+
   // Cleanup when window is hidden/inactive
   useEffect(() => {
     if (!isVisible && showCanvas) {
@@ -159,20 +159,20 @@ const App = () => {
       const timer = setTimeout(() => {
         if (!isVisible) setShowCanvas(false);
       }, 10000); // Wait 10 seconds before disabling
-      
+
       return () => clearTimeout(timer);
     } else if (isVisible && !showCanvas && !isMobile) {
       // Re-enable 3D scene when tab becomes visible again
       const timer = setTimeout(() => {
         const windowWidth = window.innerWidth;
-        const isLowEndDevice = 
-          !window.navigator.hardwareConcurrency || 
+        const isLowEndDevice =
+          !window.navigator.hardwareConcurrency ||
           window.navigator.hardwareConcurrency <= 4 ||
           windowWidth < 1024;
-          
+
         setShowCanvas(isVisible && !isMobile && !isLowEndDevice);
       }, 1000);
-      
+
       return () => clearTimeout(timer);
     }
   }, [isVisible, showCanvas, isMobile]);
@@ -208,7 +208,7 @@ const App = () => {
         <TechStack />
         <Pricing />
         <Projects />
-        <CoreTeam />
+
         <Clients />
         <Contact />
         <Footer />
