@@ -1,42 +1,42 @@
 // servicesinfo.jsx
 import React from 'react';
-import { FaCode, FaRobot, FaPaintBrush, FaCloud, FaUsers } from 'react-icons/fa';
+import { FiCode, FiCpu, FiTarget, FiCloud, FiUsers } from 'react-icons/fi';
 
 export const servicesinfo = [
   {
-    icon: <FaCode />,
-    title: "Enterprise Software Development",
+    icon: <FiCode />,
+    title: "Enterprise Engineering",
     about:
-      "End-to-end custom application development with enterprise-grade security, 99.9% uptime guarantee, and seamless integration with your existing systems.",
-    label: "Read More",
+      "Scalable, fault-tolerant software architectures designed for high-availability environments. We build systems that grow with your business, ensuring 99.99% uptime and robust security compliance.",
+    label: "Learn More",
   },
   {
-    icon: <FaRobot />,
-    title: "AI & Emerging Technology",
+    icon: <FiCpu />,
+    title: "AI & Machine Learning",
     about:
-      "Implement cutting-edge AI/ML, blockchain, and IoT solutions that deliver measurable ROI, automate processes, and create new revenue opportunities.",
-    label: "Read More",
+      "Production-grade AI solutions that drive automation and insight. From predictive analytics to custom LLM integration, we turn data into your most valuable asset.",
+    label: "Learn More",
   },
   {
-    icon: <FaPaintBrush />,
-    title: "Strategic Digital Marketing",
+    icon: <FiTarget />,
+    title: "Digital Transformation",
     about:
-      "Data-driven marketing strategies that increase conversions by an average of 35%, combining SEO, content marketing, and advanced analytics.",
-    label: "Read More",
+      "Strategic modernization of legacy systems. We help established enterprises migrate to the cloud, adopt microservices, and implement DevOps best practices.",
+    label: "Learn More",
   },
   {
-    icon: <FaCloud />,
-    title: "Cloud & SaaS Solutions",
+    icon: <FiCloud />,
+    title: "Cloud Infrastructure",
     about:
-      "Scalable cloud architecture and SaaS platforms that reduce operational costs by up to 40% while enhancing security and business agility.",
-    label: "Read More",
+      "Cloud-native architectures on AWS, Azure, and GCP. We implement Infrastructure as Code (IaC), auto-scaling, and cost-optimization strategies.",
+    label: "Learn More",
   },
   {
-    icon: <FaUsers />,
-    title: "Expert Team Augmentation",
+    icon: <FiUsers />,
+    title: "Dedicated Teams",
     about:
-      "Access to certified senior developers, designers, and engineers with specialized expertise, flexible engagement models, and rapid onboarding.",
-    label: "Read More",
+      "Augment your engineering capacity with pre-vetted senior talent. Our engineers integrate seamlessly into your workflows, adopting your culture and tooling.",
+    label: "Learn More",
   },
 ];
 
@@ -44,96 +44,83 @@ export const servicesinfo = [
 
 export const counts = [
   {
-    value: "90%",
-    title: "Conversion Rate",
+    value: "50+",
+    title: "Enterprise Clients",
   },
   {
-    value: "70K+",
-    title: "Active Users",
+    value: "100%",
+    title: "Delivery Success",
   },
   {
-    value: "47K+",
-    title: "Social Profiles",
+    value: "5M+",
+    title: "Users Supported",
   },
   {
-    value: "27K+",
-    title: "Active Followers",
+    value: "24/7",
+    title: "Global Support",
   },
 ];
 
-export const pricingPlans = [
+export const engagementModels = [
   {
-    type: "Starter Plan",
-    about: "Designed for new businesses building their online presence.",
-    specs: "Essential tools and support included:",
+    type: "Fixed Price Project",
+    about: "Ideal for well-defined scopes with clear deliverables and timelines.",
+    specs: "Comprehensive delivery includes:",
     features: [
-      "Responsive custom website or app",
-      "Dashboard setup for easy management",
-      "SEO design for improved search ranking",
-      "Basic reporting and traffic insights",
+      "Detailed technical specification",
+      "Fixed budget and timeline",
+      "Dedicated Project Manager",
+      "QA and UAT support",
     ],
-    // Removed price field
   },
   {
-    type: "Professional Plan",
-    about: "Perfect for businesses scaling their operations to the next level.",
-    specs: "Starter Plan features plus additional upgrades:",
+    type: "Dedicated Team",
+    about: "For long-term product development requiring flexibility and scale.",
+    specs: "Your extended engineering arm:",
     features: [
-      "Detailed analytics and performance data",
-      "Integration with AI and ML capabilities",
-      "Support for multiple language platforms",
-      "Priority customer service and support",
+      "Full-time senior engineers",
+      "Direct communication channels",
+      "Agile/Scrum methodology",
+      "Monthly performance reports",
     ],
-    // Removed price field
   },
   {
-    type: "Enterprise Plan",
-    about: "Customized solutions for enterprises needing robust tools.",
-    specs: "Professional Plan features plus enterprise upgrades:",
+    type: "Staff Augmentation",
+    about: "Bridge skill gaps quickly with specialized experts.",
+    specs: "On-demand expertise:",
     features: [
-      "Comprehensive SaaS platform deployment",
-      "ERP system integration and customization",
-      "Dedicated account management services",
-      "Custom AI/VR modules for innovation",
+      "Immediate resource availability",
+      "Short or long-term contracts",
+      "Seamless team integration",
+      "Specific domain expertise (AI, DevOps)",
     ],
-    // Removed price field
   },
 ];
 
-export const staffAugmentation = {
-  type: "Staff Augmentation",
-  about: "Hire experts to boost your team's capabilities and meet goals.",
-  specs: "Flexible and tailored resource engagements:",
-  features: [
-    "Frontend and backend development experts",
-    "Engineers specializing in AI and ML tech",
-    "UI/UX designers for enhanced user appeal",
-    "Managers and QA for project efficiency",
-  ],
-};
+
 
 // Realistic Testimonials
 export const testidata = [
   {
-    image: "https://randomuser.me/api/portraits/men/85.jpg",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
     review:
-      "Our partnership with SoftDevIn was transformative. Their team not only delivered on time but also injected innovative ideas into our core product. We saw a 40% boost in engagement within a month of launch.",
-    name: "David Murphy",
-    post: "CTO, BrightVision Labs",
+      "SoftDevIn didn't just build our platform; they re-engineered our entire workflow. Their technical depth in microservices architecture allowed us to scale from 10k to 1M users without a hitch.",
+    name: "Robert Fox",
+    post: "VP of Engineering, FinCore Systems",
   },
   {
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
     review:
-      "SoftDevIn's attention to detail and design-thinking approach truly impressed us. The end result exceeded our expectations, and our customers consistently praise the new interface.",
-    name: "Lisa Chen",
-    post: "Head of Product, UniCore Inc.",
+      "We needed a partner who understood complex regulatory requirements for our healthcare data. SoftDevIn delivered a HIPAA-compliant AI solution that exceeded our accuracy benchmarks.",
+    name: "Sarah Jenkins",
+    post: "CTO, HealthGuard AI",
   },
   {
-    image: "https://randomuser.me/api/portraits/men/44.jpg",
+    image: "https://randomuser.me/api/portraits/men/67.jpg",
     review:
-      "Working with SoftDevIn was a breeze. Their agile development process kept us in the loop, and the final platform is both robust and scalable. Highly recommend their services!",
-    name: "James Patel",
-    post: "Project Manager, NovaWorks",
+      "The dedicated team we hired from SoftDevIn integrated perfectly with our in-house developers. They brought senior-level expertise in React and Node.js that accelerated our roadmap by months.",
+    name: "Michael Chen",
+    post: "Director of Product, E-Comm Global",
   },
 ];
 
@@ -142,35 +129,65 @@ export const testidata = [
 
 import { FaReact, FaNodeJs, FaDatabase, FaDocker } from 'react-icons/fa';
 
-export const projectsInfo = [
+export const caseStudies = [
   {
     id: 1,
-    title: 'Strapi Headless CMS',
+    title: 'FinTech Digital Transformation',
+    category: 'FinTech',
     description:
-      'Strapi is an open-source headless CMS built with Node.js. It offers a powerful API and intuitive admin panel for quickly creating and managing content.',
-    image: 'https://images.unsplash.com/photo-1588618801953-5d13cc4175b3?ixlib=rb-4.0.3&q=80&w=1080',
-    technologies: ['Node.js', 'Database', 'Docker'],
-    demoLink: 'https://strapi.io',
-    repoLink: 'https://github.com/strapi/strapi',
+      'A comprehensive digital overhaul for a leading financial institution, integrating legacy systems with modern cloud architecture.',
+    fullDescription: 'We partnered with a major financial services provider to modernize their core banking infrastructure. The project involved migrating on-premise legacy systems to a secure, scalable cloud environment, implementing real-time transaction processing, and developing a customer-facing mobile application with biometric authentication.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&q=80&w=1080',
+    technologies: ['React', 'Node.js', 'AWS', 'PostgreSQL', 'Docker'],
+    challenge: 'The client faced slow transaction times, frequent downtime, and a disjointed user experience across platforms.',
+    solution: 'We engineered a microservices architecture using Node.js and Docker, deployed on AWS for high availability. The frontend was rebuilt with React for a seamless, responsive user interface.',
+    impact: 'Reduced transaction processing time by 60%, achieved 99.99% uptime, and increased mobile app user engagement by 45%.',
+    demoLink: '#',
+    repoLink: '#',
   },
   {
     id: 2,
-    title: 'Ghost Blogging Platform',
+    title: 'AI-Powered Healthcare Analytics',
+    category: 'Healthcare',
     description:
-      'Ghost is a modern open-source publishing platform focused on professional blogging. It\'s built on Node.js and provides a clean, user-friendly interface.',
-    image: 'https://images.unsplash.com/photo-1571689936044-cb66ad395feb?ixlib=rb-4.0.3&q=80&w=1080',
-    technologies: ['Node.js', 'Database'],
-    demoLink: 'https://ghost.org/',
-    repoLink: 'https://github.com/TryGhost/Ghost',
+      'An advanced analytics platform utilizing machine learning to predict patient outcomes and optimize hospital resource allocation.',
+    fullDescription: 'Collaborating with a network of hospitals, we developed an AI-driven analytics dashboard. The system aggregates data from electronic health records (EHR) to provide actionable insights, helping medical staff predict patient admission rates and optimize staff scheduling.',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&q=80&w=1080',
+    technologies: ['Python', 'TensorFlow', 'React', 'FastAPI', 'Azure'],
+    challenge: 'Hospital administrators struggled with inefficient resource allocation due to unpredictable patient influx.',
+    solution: 'We implemented predictive models using TensorFlow to forecast admission trends. The results are visualized in a real-time React dashboard backed by a high-performance FastAPI backend.',
+    impact: 'Improved resource utilization efficiency by 30% and reduced patient wait times by an average of 20 minutes.',
+    demoLink: '#',
+    repoLink: '#',
   },
   {
     id: 3,
-    title: 'Rocket.Chat',
+    title: 'Global E-Commerce Scalability',
+    category: 'E-Commerce',
     description:
-      'Rocket.Chat is an open-source team communication platform with features like real-time chat, video conferencing, and full customization, all self-hostable.',
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&q=80&w=1080',
-    technologies: ['Node.js', 'Database', 'Docker'],
-    demoLink: 'https://cloud.rocket.chat/trial',
-    repoLink: 'https://github.com/RocketChat/Rocket.Chat',
+      'Scaling a high-traffic e-commerce platform to handle millions of concurrent users during peak sales events.',
+    fullDescription: 'A global retail brand approached us to solve performance bottlenecks during Black Friday sales. We optimized their existing e-commerce platform, implementing advanced caching strategies, database sharding, and a CDN for static asset delivery.',
+    image: 'https://images.unsplash.com/photo-1556742031-c6961e8560b0?ixlib=rb-4.0.3&q=80&w=1080',
+    technologies: ['Next.js', 'GraphQL', 'Redis', 'Kubernetes', 'GCP'],
+    challenge: 'The platform experienced severe latency and crashes during high-traffic spikes, leading to lost revenue.',
+    solution: 'We migrated the frontend to Next.js for better server-side rendering performance, introduced Redis for caching frequently accessed data, and orchestrated the deployment with Kubernetes for auto-scaling.',
+    impact: 'Successfully handled 5M+ concurrent users with zero downtime and improved page load speeds by 40%.',
+    demoLink: '#',
+    repoLink: '#',
+  },
+  {
+    id: 4,
+    title: 'Smart Supply Chain Management',
+    category: 'Logistics',
+    description:
+      'IoT-enabled supply chain solution providing real-time tracking and automated inventory management.',
+    fullDescription: 'We built a smart logistics platform for a manufacturing giant. By integrating IoT sensors with a centralized cloud dashboard, we enabled real-time tracking of goods, automated inventory reordering, and predictive maintenance for fleet vehicles.',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&q=80&w=1080',
+    technologies: ['Vue.js', 'Go', 'MongoDB', 'MQTT', 'AWS IoT'],
+    challenge: 'Lack of visibility into the supply chain resulted in inventory stockouts and delayed shipments.',
+    solution: 'We developed a real-time tracking system using MQTT for low-latency communication between IoT devices and the cloud. The data is processed by a Go backend and stored in MongoDB.',
+    impact: 'Reduced inventory holding costs by 25% and improved on-time delivery rates to 98%.',
+    demoLink: '#',
+    repoLink: '#',
   },
 ];

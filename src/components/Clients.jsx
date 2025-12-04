@@ -31,12 +31,9 @@ const Clients = () => {
     };
 
     return (
-        <motion.section
+        <section
             id="testimonials"
-            className="section-container section-gradient-2 glass-effect"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            className="section-container bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 border-t border-slate-200 pt-24"
         >
 
             {!isLowEndDevice && (
@@ -77,26 +74,17 @@ const Clients = () => {
             )}
 
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center gap-12">
-                <div className="text-center flex flex-col gap-3 max-w-2xl mx-auto">
+                <div className="text-center flex flex-col gap-4 max-w-2xl mx-auto">
+                    <span className="self-center inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary-50 border border-primary-100 text-[11px] font-semibold tracking-[0.18em] text-primary-700 uppercase">
+                        Testimonials
+                    </span>
                     <h1
                         data-aos="fade-up"
                         data-aos-delay="300"
-                        className="
-              font-semibold 
-              text-3xl md:text-4xl lg:text-5xl 
-              leading-tight 
-              font-ubuntu 
-              text-center
-              drop-shadow-sm
-              bg-gradient-to-r 
-              from-blue-500 
-              to-purple-600 
-              text-transparent 
-              bg-clip-text
-            "
+                        className="section-title"
                     >
-                        What Our Clients Say
-          </h1>
+                        What our clients say
+                    </h1>
                 </div>
 
                 <div
@@ -106,11 +94,11 @@ const Clients = () => {
             w-full
             max-w-2xl
             mx-auto
-            bg-white/30 
+            bg-white 
             backdrop-blur-md 
-            rounded-xl 
+            rounded-xl border border-slate-200
             p-6 sm:p-8 md:p-10 
-            shadow-lg
+            shadow-lg shadow-slate-200/80
           "
                 >
                     <Slider ref={sliderRef} {...settings}>
@@ -128,14 +116,14 @@ const Clients = () => {
 
                                     {/* Text Section */}
                                     <div className="flex flex-col gap-4">
-                                        <p className="font-ubuntu font-light text-lg sm:text-lg md:text-xl text-gray-700 text-left">
+                                        <p className="font-ubuntu font-light text-lg sm:text-lg md:text-xl text-slate-700 text-left">
                                             {item.review}
                                         </p>
                                         <div>
-                                            <h3 className="text-black font-semibold text-xl sm:text-xl md:text-2xl">
+                                            <h3 className="text-slate-900 font-semibold text-xl sm:text-xl md:text-2xl">
                                                 {item.name}
                                             </h3>
-                                            <p className="text-gray-600 text-base sm:text-lg">
+                                            <p className="text-slate-500 text-base sm:text-lg">
                                                 {item.post}
                                             </p>
                                         </div>
@@ -154,7 +142,7 @@ const Clients = () => {
                                 className="w-3 h-3 sm:w-4 sm:h-4 rounded-full cursor-pointer"
                                 onClick={() => handleDotClick(idx)}
                                 animate={{
-                                    backgroundColor: currentSlide === idx ? '#8028ff' : '#ccc',
+                                    backgroundColor: currentSlide === idx ? '#7c3aed' : 'rgba(148, 163, 184, 0.5)',
                                     scale: currentSlide === idx ? 1.25 : 1,
                                 }}
                                 transition={{ duration: 0.3 }}
@@ -163,7 +151,7 @@ const Clients = () => {
                     </div>
                 </div>
             </div>
-        </motion.section>
+        </section>
     );
 };
 

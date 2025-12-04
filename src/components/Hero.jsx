@@ -1,107 +1,117 @@
-// src/components/Hero.jsx (Optimized)
-import React, { useEffect, useState } from 'react';
+// src/components/Hero.jsx - Updated for routing
+import React from 'react';
 
-// Throttle function to limit execution frequency
-const throttle = (callback, delay) => {
-  let lastCall = 0;
-  return function (...args) {
-    const now = new Date().getTime();
-    if (now - lastCall < delay) return;
-    lastCall = now;
-    return callback(...args);
-  };
-};
+const heroStats = [
+    { label: 'Clients shipped for', value: '20+' },
+    { label: 'AI & automation builds', value: '10+' },
+    { label: 'Regions served', value: '3' },
+];
 
-const Hero = React.forwardRef(({ globalScrollProgress }, ref) => {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [scrollProgressLocal, setScrollProgressLocal] = useState(0);
-
-    useEffect(() => {
-        // Trigger 'loaded' for the fade-in effect
-        const timeout = setTimeout(() => setIsLoaded(true), 500);
-
-        // AOS initialized globally in App.jsx
-
-        // Create throttled scroll handler
-        const handleScroll = throttle(() => {
-            if (!ref.current) return;
-
-            const hero = ref.current;
-            const scrollTop = window.scrollY;
-            const heroTop = hero.offsetTop;
-            const heroHeight = hero.offsetHeight;
-
-            const relativeScroll = scrollTop - heroTop;
-            const clampedScroll = Math.max(0, relativeScroll);
-
-            // This local progress (0-100) animates the heading
-            const progress = Math.min((clampedScroll / heroHeight) * 100, 100);
-            setScrollProgressLocal(progress);
-        }, 50); // Throttle to max 20 updates per second
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll();
-
-        return () => {
-            clearTimeout(timeout);
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [ref]);
-
-    // More efficient heading movement - reduced amount
-    const headingTranslate = Math.min(scrollProgressLocal * 0.5, 50);
-    const headingStyle = {
-        transform: `translateY(${headingTranslate * -1}px)`,
-    };
-
+const Hero = () => {
     return (
-        <div className="section-container section-white">
-            <section
-                id="hero"
-                ref={ref}
-                className="content-container flex flex-col"
-            >
-                {/* HEADLINE with subtle upward movement */}
-                <div className="hover-stretch-container mb-8 sm:mb-14 lg:mb-20" style={headingStyle}>
-                    <h1 className="hover-stretch-title">
-                        <span>Solutions</span>
-                        <span aria-hidden="true">
-                            <span>F</span>
-                            <span className="stretch-o"></span>
-                            <span>r</span>
-                        </span>
-                        <span>Innovators</span>
-                    </h1>
-                </div>
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white text-slate-900">
+            <div className="absolute inset-0">
+                <div className="absolute w-72 h-72 bg-primary-200/40 rounded-full blur-3xl -left-10 -top-16" />
+                <div className="absolute w-80 h-80 bg-cyan-300/40 rounded-full blur-3xl right-0 top-10" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(15,23,42,0.04),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(15,23,42,0.05),transparent_25%)]" />
+            </div>
 
-                {/* Description Text */}
-                <p
-                    className={`font-ubuntu text-xl lg:text-2xl text-slate-700 transition-all duration-700 ${
-                        isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                >
-                    At SoftDevIn, we deliver enterprise-grade software solutions and digital transformation services. 
-                    Our expertise spans custom development, AI integration, and strategic digital marketing, 
-                    helping businesses achieve measurable growth and operational excellence.
-                </p>
-                
-                {/* Added Call-to-Action for better conversion */}
-                <div 
-                    className={`mt-4 transition-all duration-700 ${
-                        isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                >
-                    <a 
-                        href="#contact" 
-                        className="inline-block px-6 py-3 bg-gradient-to-r from-[#004aad] to-[#cb6ce6] text-white font-medium rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300"
-                        aria-label="Discuss your project with our experts"
-                    >
-                        Discuss Your Project
-                    </a>
+            <div className="content-container relative py-16 lg:py-24">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-6">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-700 border border-primary-100 text-sm font-semibold">
+                            Software Development Innovation Pvt. Ltd. Est. 2023
+                        </span>
+                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight">
+                            Engineering intelligent software for complex teams
+                        </h1>
+                        <p className="text-lg text-slate-700 max-w-2xl">
+                            We help modern teams ship secure, scalable software—combining AI, automation, and cross‑platform engineering to turn complicated requirements into reliable digital products.
+                        </p>
+
+                        <div className="flex flex-wrap gap-3">
+                            <a
+                                href="/custom-order"
+                                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 text-white px-5 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5 shadow-md"
+                            >
+                                Request Consultation
+                            </a>
+                            <a
+                                href="/work"
+                                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-100"
+                            >
+                                View Case Studies
+                            </a>
+                        </div>
+
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
+                            {heroStats.map((stat) => (
+                                <div
+                                    key={stat.label}
+                                    className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg shadow-slate-200/70"
+                                >
+                                    <p className="text-2xl font-bold">{stat.value}</p>
+                                    <p className="text-xs uppercase tracking-[0.14em] text-slate-500">{stat.label}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="relative" style={{ perspective: '1400px' }}>
+                        <div className="absolute -left-10 top-6 w-24 h-24 rounded-full bg-primary-100 blur-2xl" />
+                        <div className="absolute -right-6 bottom-10 w-28 h-28 rounded-full bg-cyan-200 blur-2xl" />
+
+                        <div className="relative min-h-[360px]">
+                            <div className="tilt-card tilt-card-1">
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="text-sm uppercase tracking-[0.16em] text-slate-500">System Status</div>
+                                    <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold">Operational</span>
+                                </div>
+                                <ul className="space-y-2 text-sm text-slate-800">
+                                    <li className="flex items-center justify-between">
+                                        <span>API Availability</span>
+                                        <span className="text-emerald-600 font-semibold">99.99%</span>
+                                    </li>
+                                    <li className="flex items-center justify-between">
+                                        <span>Avg. Latency</span>
+                                        <span className="text-slate-900 font-semibold">12ms</span>
+                                    </li>
+                                    <li className="flex items-center justify-between">
+                                        <span>Security Audit</span>
+                                        <span className="text-emerald-600 font-semibold">Passed</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div className="tilt-card tilt-card-2">
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="text-sm uppercase tracking-[0.16em] text-slate-500">Cloud Scale</div>
+                                    <span className="text-lg font-bold text-slate-900">Auto</span>
+                                </div>
+                                <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                                    <div className="h-full w-[92%] bg-gradient-to-r from-emerald-400 to-cyan-400" />
+                                </div>
+                                <p className="text-xs text-slate-600 mt-2">Kubernetes clusters auto-scaling based on real-time load.</p>
+                            </div>
+
+                            <div className="tilt-card tilt-card-3">
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="text-sm uppercase tracking-[0.16em] text-slate-500">Architecture</div>
+                                    <span className="text-xs px-2 py-1 rounded-full bg-primary-50 text-primary-700">Microservices</span>
+                                </div>
+                                <div className="grid grid-cols-2 gap-3 text-sm text-slate-900">
+                                    <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm">Docker / K8s</div>
+                                    <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm">Terraform</div>
+                                    <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm">GraphQL</div>
+                                    <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm">Next.js</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     );
-});
+};
 
 export default Hero;

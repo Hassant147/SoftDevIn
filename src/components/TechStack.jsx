@@ -72,7 +72,7 @@ const techCategories = [
 ];
 
 // Flatten all icons into a single array for the marquee
-const allTechIcons = techCategories.flatMap(category => 
+const allTechIcons = techCategories.flatMap(category =>
   category.icons.map(tech => ({
     ...tech,
     category: category.title
@@ -81,47 +81,44 @@ const allTechIcons = techCategories.flatMap(category =>
 
 const TechStack = () => {
   return (
-    <section id="tech-stack" className="section-container section-gradient-2">
+    <section id="tech-stack" className="section-container bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 border-t border-slate-200">
       <div className="content-container flex flex-col items-center">
-        {/* Section Title */}
-        <motion.h1
-          data-aos="fade-down"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="section-title"
-        >
-          Our Technology Stack
-        </motion.h1>
-
-        <motion.p
-          data-aos="fade-down"
-          data-aos-delay="200"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="max-w-2xl mx-auto mb-8 text-center"
-        >
-          Cutting-edge technologies we use to build amazing solutions
-        </motion.p>
-
-        {/* Marquee Container */}
-        <div className="w-full overflow-hidden">
-          <Marquee
-            gradient={false}
-            speed={40}
-            pauseOnHover={true}
-            className="py-8"
+        <div className="text-center space-y-3">
+          <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
+            Core stack
+          </p>
+          <motion.h1
+            data-aos="fade-down"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="section-title"
           >
+            Trusted tools for fast, stable delivery
+          </motion.h1>
+          <motion.p
+            data-aos="fade-down"
+            data-aos-delay="150"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-2xl mx-auto mb-6 text-slate-700"
+          >
+            We choose battle-tested technologies that ensure long-term maintainability, security, and performance at scale. No hype, just engineering.
+          </motion.p>
+        </div>
+
+        <div className="w-full overflow-hidden bg-white border border-slate-200 rounded-3xl shadow-2xl shadow-slate-200 mt-6">
+          <Marquee gradient={false} speed={38} pauseOnHover className="py-6">
             {allTechIcons.map((tech, index) => (
               <div
                 key={index}
-                className="inline-flex flex-col items-center justify-center mx-8"
+                className="inline-flex flex-col items-center justify-center mx-10"
               >
-                <div className="w-16 h-16 flex items-center justify-center">
-                  <tech.Icon className="w-12 h-12 text-gray-700 hover:text-blue-600 transition-colors duration-300" />
+                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-slate-50 border border-slate-200 shadow-md">
+                  <tech.Icon className="w-10 h-10 text-primary-600" />
                 </div>
-                <span className="mt-2 text-sm text-gray-600">{tech.name}</span>
+                <span className="mt-3 text-sm text-slate-700">{tech.name}</span>
               </div>
             ))}
           </Marquee>

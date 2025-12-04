@@ -1,220 +1,116 @@
 import React, { useEffect, useRef } from 'react';
-import { FaChevronCircleRight } from "react-icons/fa";
 import { motion, useAnimation } from 'framer-motion';
+import { FiLayers, FiCode, FiTrendingUp, FiUsers } from 'react-icons/fi';
+
+const pillars = [
+    { title: 'Architecture first', copy: 'Designing fault-tolerant systems with secure defaults and observability built in.' },
+    { title: 'Human-centered product', copy: 'Interfaces that stay fast, accessible, and focused on the outcomes that matter.' },
+    { title: 'Measured delivery', copy: 'Weekly releases, clear milestones, and dashboards your leadership can trust.' },
+    { title: 'Embedded partnership', copy: 'We work as an extension of your team—from discovery through long-term support.' },
+];
 
 const About = () => {
     const controls = useAnimation();
     const sectionRef = useRef(null);
 
     useEffect(() => {
-        // AOS initialized globally in App.jsx
-    }, []);
-
-    useEffect(() => {
         const handleScroll = () => {
             if (!sectionRef.current) return;
-
             const top = sectionRef.current.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-
-            if (top < windowHeight * 0.8) {
-                controls.start({
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: 1 },
-                });
+            if (top < window.innerHeight * 0.8) {
+                controls.start({ opacity: 1, y: 0, transition: { duration: 0.7 } });
             }
         };
-
         window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Trigger on mount
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
     }, [controls]);
-
-    // Variants for the list items
-    const listItemVariants = {
-        hidden: { opacity: 0, x: -20 },
-        visible: (custom) => ({
-            opacity: 1,
-            x: 0,
-            transition: { delay: custom * 0.3, duration: 0.6 },
-        }),
-        hover: { scale: 1.05, color: '#004aad' },
-    };
 
     return (
         <section
             id="about"
             ref={sectionRef}
-            className="section-container section-gradient-2 glass-effect"
+            className="section-container bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 border-t border-slate-200"
         >
-            {/* Inner container */}
-            <div className="content-container flex flex-col lg:flex-row justify-between items-center gap-8 sm:gap-10 md:gap-12 lg:gap-16">
-
-                {/* Content */}
+            <div className="content-container grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 24 }}
                     animate={controls}
-                    className="flex flex-col justify-center items-start gap-4 md:gap-5 lg:gap-6 w-full lg:w-full"
+                    className="space-y-5"
                 >
-                    {/* Section Header */}
-                    <motion.h1
-                        data-aos="fade-down"
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1 }}
-                        className="section-title"
-                    >
-                        ABOUT US
-                    </motion.h1>
+                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.18em] uppercase">
+                        About SoftDevIn
+                    </span>
+                    <h2 className="section-heading text-left">
+                        Engineering depth with real-world impact
+                    </h2>
+                    <p className="text-lg text-slate-700">
+                        SoftDevIn is a software studio focused on generative AI, automation, and cross‑platform apps. We pair senior engineers with clear product thinking so every build is secure, maintainable, and tied to measurable business value.
+                    </p>
 
-                    {/* Main Title with Gradient Text and Improved Animation */}
-                    <motion.h2
-                        data-aos="fade-up"
-                        data-aos-delay="400"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                        whileHover={{ scale: 1.05 }}
-                        className="sub-section-title text-left font-ubuntu bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text"
-                    >
-                        Enterprise Technology Excellence
-                    </motion.h2>
-
-                    {/* Description */}
-                    <motion.p
-                        data-aos="fade-up"
-                        data-aos-delay="600"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.6 }}
-                        className="text-slate-700 text-left lg:text-left"
-                    >
-                        Established in 2023, SoftDevIn has rapidly emerged as a trusted technology partner for businesses across industries. Our team of certified engineers and consultants brings 50+ years of combined experience in enterprise software development, cloud architecture, and digital strategy. We've successfully delivered over 200 projects for clients ranging from Fortune 500 companies to innovative startups.
-                    </motion.p>
-
-                    {/* Features List */}
-                    <motion.ul
-                        data-aos="fade-up"
-                        data-aos-delay="800"
-                        initial="hidden"
-                        animate="visible"
-                        className="flex flex-col justify-center items-start gap-4"
-                    >
-                        <motion.li
-                            className="flex items-center gap-4 text-black cursor-pointer"
-                            variants={listItemVariants}
-                            custom={0}
-                            whileHover="hover"
-                        >
+                    <div className="grid sm:grid-cols-2 gap-4">
+                        {pillars.map((item, idx) => (
                             <div
-                                className="flex items-center justify-center rounded-full"
-                                style={{
-                                    width: '24px',
-                                    height: '24px',
-                                    background: 'radial-gradient(circle at 0% 0%, #5de0e6, #8028ff)',
-                                }}
+                                key={item.title}
+                                className="rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-200/70 p-4"
+                                style={{ transform: `translateZ(${idx * 6}px)` }}
                             >
-                                <FaChevronCircleRight className="text-white text-xs sm:text-sm" />
+                                <p className="text-sm uppercase tracking-[0.12em] text-slate-500 mb-2">{item.title}</p>
+                                <p className="text-slate-700 text-sm leading-relaxed">{item.copy}</p>
                             </div>
-                            Enterprise software solutions with 99.9% uptime and scalability
-                        </motion.li>
-
-                        <motion.li
-                            className="flex items-center gap-4 text-black cursor-pointer"
-                            variants={listItemVariants}
-                            custom={1}
-                            whileHover="hover"
-                        >
-                            <div
-                                className="flex items-center justify-center rounded-full"
-                                style={{
-                                    width: '24px',
-                                    height: '24px',
-                                    background: 'radial-gradient(circle at 0% 0%, #5de0e6, #8028ff)',
-                                }}
-                            >
-                                <FaChevronCircleRight className="text-white text-xs sm:text-sm" />
-                            </div>
-                            Data-driven digital strategies yielding 40%+ ROI for clients
-                        </motion.li>
-
-                        <motion.li
-                            className="flex items-center gap-4 text-black cursor-pointer"
-                            variants={listItemVariants}
-                            custom={2}
-                            whileHover="hover"
-                        >
-                            <div
-                                className="flex items-center justify-center rounded-full"
-                                style={{
-                                    width: '24px',
-                                    height: '24px',
-                                    background: 'radial-gradient(circle at 0% 0%, #5de0e6, #8028ff)',
-                                }}
-                            >
-                                <FaChevronCircleRight className="text-white text-xs sm:text-sm" />
-                            </div>
-                            Award-winning UX/UI design enhancing user engagement by 35%
-                        </motion.li>
-
-                        <motion.li
-                            className="flex items-center gap-4 text-black cursor-pointer"
-                            variants={listItemVariants}
-                            custom={3}
-                            whileHover="hover"
-                        >
-                            <div
-                                className="flex items-center justify-center rounded-full"
-                                style={{
-                                    width: '24px',
-                                    height: '24px',
-                                    background: 'radial-gradient(circle at 0% 0%, #5de0e6, #8028ff)',
-                                }}
-                            >
-                                <FaChevronCircleRight className="text-white text-xs sm:text-sm" />
-                            </div>
-                            Strategic partnerships with 95% client retention rate
-                        </motion.li>
-                    </motion.ul>
+                        ))}
+                    </div>
                 </motion.div>
 
-                {/* Decorative Element: Animated Gradient Spinning SVG */}
-                <div className="hidden lg:flex lg:w-1/2 justify-end items-center">
-                    <motion.div
-                        className="
-                            w-40 sm:w-48 md:w-56 lg:w-64 
-                            h-40 sm:h-48 md:h-56 lg:h-64 
-                            rounded-full 
-                            flex 
-                            items-center 
-                            justify-center 
-                            shadow-xl
-                        "
-                        style={{
-                            background: 'linear-gradient(90deg, #004aad, #cb6ce6)',
-                        }}
-                        animate={{ rotate: 360 }}
-                        transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-16 sm:h-20 md:h-24 lg:h-24 w-16 sm:w-20 md:w-24 lg:w-24 text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M12 4v1m0 14v1m8-8h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"
-                            />
-                        </svg>
-                    </motion.div>
+                <div className="relative h-full">
+                    <div className="absolute -top-6 -left-10 w-40 h-40 rounded-full bg-primary-100/70 blur-3xl" />
+                    <div className="absolute -bottom-8 -right-14 w-48 h-48 rounded-full bg-cyan-100/70 blur-3xl" />
+                    <div className="relative rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/80 p-6 overflow-hidden">
+                        <div className="flex items-center justify-between mb-4">
+                            <div>
+                                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Delivery snapshot</p>
+                                <h3 className="text-xl font-semibold text-slate-900">What we&rsquo;re building</h3>
+                            </div>
+                            <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold">Active</span>
+                        </div>
+                        <div className="space-y-3 text-sm">
+                            <div className="flex items-center justify-between">
+                                <span className="text-slate-700">AI assistants & RAG tools</span>
+                                <span className="font-semibold text-slate-900">In build</span>
+                            </div>
+                            <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                                <div className="h-full w-[82%] bg-gradient-to-r from-primary-500 to-primary-300" />
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <span className="text-slate-700">Ops & workflow automation</span>
+                                <span className="font-semibold text-slate-900">Rolling out</span>
+                            </div>
+                            <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                                <div className="h-full w-[68%] bg-gradient-to-r from-primary-400 to-accent-cyan" />
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <span className="text-slate-700">Web & mobile platforms</span>
+                                <span className="font-semibold text-slate-900">In discovery</span>
+                            </div>
+                            <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                                <div className="h-full w-[35%] bg-gradient-to-r from-amber-400 to-orange-300" />
+                            </div>
+                        </div>
+                        <div className="mt-6 grid grid-cols-3 gap-3 text-center">
+                            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-3">
+                                <p className="text-lg font-bold text-slate-900">120+</p>
+                                <p className="text-xs text-slate-500 uppercase tracking-[0.12em]">Engineers</p>
+                            </div>
+                            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-3">
+                                <p className="text-lg font-bold text-slate-900">24/7</p>
+                                <p className="text-xs text-slate-500 uppercase tracking-[0.12em]">Support</p>
+                            </div>
+                            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-3">
+                                <p className="text-lg font-bold text-slate-900">100%</p>
+                                <p className="text-xs text-slate-500 uppercase tracking-[0.12em]">Delivery</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

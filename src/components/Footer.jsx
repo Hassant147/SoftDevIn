@@ -1,132 +1,72 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa";
-import { Link } from "react-scroll";
+import logo from "../assets/web-logo.svg";
 
-export default function FooterAnime() {
-    return (
-        <>
-            {/** 
-             * SECTION that holds the footer content with glowing border 
-             */}
-            <section className="relative w-full overflow-hidden bg-black">
-                {/**
-                 * Glowing Border Structure
-                 */}
-                <div className="footer-container">
-                    <div className="animated-border-box-glow"></div>
-                    <div className="animated-border-box"></div>
-
-                    {/**
-                     * Footer Content
-                     * Ensure this is positioned above the glowing border
-                     */}
-                    <div className="relative z-10 pt-10 pb-6 px-6 lg:px-20">
-                        {/* Example Footer Grid (3 Columns on LG, 1 on small) */}
-                        <div className="grid lg:grid-cols-3 gap-8">
-                            {/* 1) Left Column */}
-                            <div>
-                                <h1 className="text-white text-3xl font-semibold mb-4">
-                                    Let's Start Working Together
-                                </h1>
-                                <button
-                                    className="
-                                        bg-gradient-to-r 
-                                        from-blue-500 
-                                        to-pink-500 
-                                        px-6 
-                                        py-3 
-                                        text-white 
-                                        font-semibold 
-                                        rounded-full 
-                                        hover:scale-105 
-                                        transition
-                                    "
-                                >
-                                    Get Started Now
-                                </button>
-                            </div>
-
-                            {/* 2) Middle Column */}
-                            <div className="text-white">
-                                <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
-                                <p>Gulberg Greens, Islamabad</p>
-                                <p>+92 336 5690614</p>
-                                <p>support@softdevin.com</p>
-                            </div>
-
-                            {/* 3) Right Column */}
-                            <div className="text-white">
-                                <h2 className="text-2xl font-semibold mb-4">Subscribe Newsletter</h2>
-                                <p>The charms of pleasure of the moment by desire.</p>
-                                <div className="mt-3 flex flex-col gap-3">
-                                    <input
-                                        type="email"
-                                        className="bg-slate-900 text-white px-4 py-2 rounded"
-                                        placeholder="Enter your valid email"
-                                    />
-                                    <button
-                                        className="
-                                            bg-gradient-to-r 
-                                            from-blue-500 
-                                            to-pink-500 
-                                            text-white 
-                                            px-6 
-                                            py-3 
-                                            rounded-full 
-                                            hover:scale-105 
-                                            transition
-                                        "
-                                    >
-                                        Subscribe Now
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/** 
-                     * Bottom Bar Integrated into Main Footer 
-                     */}
-                    <div className="relative z-10 border-t border-slate-600 py-4 px-6 lg:px-20">
-                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <p className="text-white text-2xl font-bold">
-                                SoftDevIn Pvt Ltd
-                            </p>
-                            <p className="text-white text-sm">
-                                © 2023, <b>SoftDevIn</b>, All Rights Reserved
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/** Scroll to top button */}
-            <div
-                className="
-                    bg-gradient-to-r 
-                    from-blue-500 
-                    to-pink-500 
-                    text-black 
-                    p-3 
-                    rounded-full 
-                    hover:bg-black 
-                    hover:text-white 
-                    cursor-pointer 
-                    fixed 
-                    bottom-6 
-                    right-6 
-                    transition-transform
-                    duration-300
-                    hover:scale-110
-                    active:scale-90
-                    shadow-lg
-                    z-50
-                "
-            >
-                <Link to="hero" spy={true} offset={-100} smooth={false}>
-                    <FaArrowUp className="w-6 h-6" />
-                </Link>
+const Footer = () => {
+  return (
+    <>
+      <footer className="bg-white border-t border-slate-200 text-slate-700">
+        <div className="w-[90%] mx-auto py-12">
+          <div className="flex flex-col gap-10">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="flex items-center gap-3">
+                <img src={logo} alt="SoftDevIn logo" className="h-10 w-auto" />
+              </div>
+              <Link
+                to="/custom-order"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 text-white px-5 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5 shadow-md"
+              >
+                Start a project
+              </Link>
             </div>
-        </>
-    );
-}
+
+            <div className="grid md:grid-cols-4 gap-8">
+              <div className="md:col-span-2 space-y-3">
+                <h3 className="text-lg font-semibold text-slate-900">Enterprise-ready delivery</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  We design, build, and ship software with predictable timelines, secure defaults, and a clear line of sight to impact.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-[0.14em]">Company</h4>
+                <div className="flex flex-col gap-2 text-sm text-slate-600">
+                  <Link to="/about" className="hover:text-primary-700">About</Link>
+                  <Link to="/careers" className="hover:text-primary-700">Careers</Link>
+                  <Link to="/technologies" className="hover:text-primary-700">Technologies</Link>
+                  <Link to="/custom-order" className="hover:text-primary-700">Get started</Link>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-[0.14em]">Contact</h4>
+                <div className="flex flex-col gap-2 text-sm text-slate-600">
+                  <span>Gulberg Greens, Islamabad</span>
+                  <a href="tel:+923365690614" className="hover:text-primary-700">+92 336 5690614</a>
+                  <a href="mailto:support@softdevin.com" className="hover:text-primary-700">support@softdevin.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-slate-500">
+              <span>© 2024 SoftDevIn. All rights reserved.</span>
+              <span>Privacy · Terms</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-6 right-6 inline-flex items-center justify-center h-11 w-11 rounded-full bg-white text-slate-900 border border-slate-200 shadow-lg hover:bg-slate-50 transition-transform hover:-translate-y-1"
+        aria-label="Scroll to top"
+        type="button"
+      >
+        <FaArrowUp className="w-4 h-4" />
+      </button>
+    </>
+  );
+};
+
+export default Footer;
