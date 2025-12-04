@@ -27,7 +27,7 @@ const Services = () => {
         arrows: false,
         dots: false, // Disable default dots
         autoplay: true,
-        autoplaySpeed: 1500,
+        autoplaySpeed: 3200,
         responsive: [
             {
                 breakpoint: 1536, // 2xl
@@ -72,7 +72,7 @@ const Services = () => {
                     <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
                         Services
                     </span>
-                    <h1 className="section-title">What we deliver</h1>
+                    <h2 className="section-title">What we deliver</h2>
                 </motion.div>
 
                 <motion.p
@@ -92,7 +92,7 @@ const Services = () => {
                         {servicesinfo.map((item, index) => (
                             <div key={index} className="px-2">
                                 <motion.div
-                                    className="bg-white my-5 border border-slate-200 rounded-3xl p-8 sm:py-10 sm:px-6 md:py-12 md:px-8 flex flex-col items-start justify-between h-auto md:h-96 lg:h-96 w-full transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-md shadow-slate-200/70"
+                                    className="bg-white my-5 border border-slate-200 rounded-3xl p-8 sm:py-10 sm:px-6 md:py-12 md:px-8 flex flex-col items-start justify-between h-full min-h-[340px] lg:min-h-[360px] w-full transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-md shadow-slate-200/70"
                                     data-aos="zoom-in-up"
                                     data-aos-delay={300 + index * 100} // Staggered animation delays
                                     initial={{ opacity: 0, y: 50 }}
@@ -107,9 +107,9 @@ const Services = () => {
                                     </GradientIcon>
 
                                     {/* Service Title */}
-                                    <h2 className="font-semibold mb-2 text-slate-900 text-left text-lg">
+                                    <h3 className="font-semibold mb-2 text-slate-900 text-left text-lg">
                                         {item.title}
-                                    </h2>
+                                    </h3>
 
                                     {/* Service Description */}
                                     <p className="mb-4 leading-relaxed text-left break-words w-full text-slate-600 text-sm">

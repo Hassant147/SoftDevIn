@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaPython, FaAws, FaDocker, FaDatabase, FaMobileAlt, FaCloud, FaCode, FaServer, FaBrain } from 'react-icons/fa';
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiRedis, SiKubernetes, SiTensorflow, SiPytorch, SiGraphql, SiNestjs } from 'react-icons/si';
 
+import SeoWrapper from '../components/SeoWrapper';
+
 const Technologies = () => {
     const [activeCategory, setActiveCategory] = useState('all');
 
@@ -51,6 +53,11 @@ const Technologies = () => {
 
     return (
         <div className="min-h-screen bg-neutral-50">
+            <SeoWrapper
+                title="Technology Stack - React, Node.js, Python, AI"
+                description="Our modern tech stack includes React, Next.js, Node.js, Python, and AI frameworks like TensorFlow. We choose the right tools for scalable software."
+                keywords="react, node.js, python, tensorflow, aws, docker, kubernetes, tech stack"
+            />
             {/* Hero Section */}
             <section className="section pt-32 pb-16 bg-white">
                 <div className="container">

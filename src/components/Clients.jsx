@@ -73,7 +73,7 @@ const Clients = () => {
             </div>
             )}
 
-            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center gap-12">
+            <div className="content-container flex flex-col items-center justify-center gap-12">
                 <div className="text-center flex flex-col gap-4 max-w-2xl mx-auto">
                     <span className="self-center inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary-50 border border-primary-100 text-[11px] font-semibold tracking-[0.18em] text-primary-700 uppercase">
                         Testimonials
@@ -116,7 +116,7 @@ const Clients = () => {
 
                                     {/* Text Section */}
                                     <div className="flex flex-col gap-4">
-                                        <p className="font-ubuntu font-light text-lg sm:text-lg md:text-xl text-slate-700 text-left">
+                                        <p className="text-lg sm:text-lg md:text-xl text-slate-700 text-left leading-relaxed">
                                             {item.review}
                                         </p>
                                         <div>

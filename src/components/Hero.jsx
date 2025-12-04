@@ -1,5 +1,6 @@
 // src/components/Hero.jsx - Updated for routing
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const heroStats = [
     { label: 'Clients shipped for', value: '20+' },
@@ -30,18 +31,18 @@ const Hero = () => {
                         </p>
 
                         <div className="flex flex-wrap gap-3">
-                            <a
-                                href="/custom-order"
+                            <Link
+                                to="/custom-order"
                                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 text-white px-5 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5 shadow-md"
                             >
                                 Request Consultation
-                            </a>
-                            <a
-                                href="/work"
+                            </Link>
+                            <Link
+                                to="/work"
                                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-100"
                             >
                                 View Case Studies
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">

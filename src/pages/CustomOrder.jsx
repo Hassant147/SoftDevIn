@@ -43,6 +43,8 @@ const steps = [
   { id: 3, label: 'Scope' },
 ];
 
+import SeoWrapper from '../components/SeoWrapper';
+
 const CustomOrder = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -84,6 +86,11 @@ const CustomOrder = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <SeoWrapper
+        title="Start a Project - Custom Software Development"
+        description="Tell us about your project. We build custom web apps, mobile apps, and AI solutions tailored to your business needs."
+        keywords="hire developers, custom software quote, app development cost, software project brief"
+      />
       <div className="max-w-6xl mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -113,9 +120,8 @@ const CustomOrder = () => {
                   <React.Fragment key={item.id}>
                     <div className="flex items-center gap-3">
                       <div
-                        className={`w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold ${
-                          done ? 'bg-primary-600 text-white' : active ? 'border-2 border-primary-600 text-primary-700' : 'border border-slate-200 text-slate-500'
-                        }`}
+                        className={`w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold ${done ? 'bg-primary-600 text-white' : active ? 'border-2 border-primary-600 text-primary-700' : 'border border-slate-200 text-slate-500'
+                          }`}
                       >
                         {done ? <FiCheckCircle /> : item.id}
                       </div>
@@ -155,16 +161,14 @@ const CustomOrder = () => {
                           <button
                             key={type.value}
                             onClick={() => setFormData({ ...formData, projectType: type.value })}
-                            className={`text-left rounded-2xl border transition-all p-4 flex flex-col gap-2 hover:-translate-y-0.5 ${
-                              selected
+                            className={`text-left rounded-2xl border transition-all p-4 flex flex-col gap-2 hover:-translate-y-0.5 ${selected
                                 ? 'border-primary-600 shadow-lg bg-gradient-to-br from-primary-500 to-primary-700 text-white'
                                 : 'border-slate-200 bg-white hover:border-slate-300 shadow-sm'
-                            }`}
+                              }`}
                           >
                             <div
-                              className={`w-10 h-10 rounded-full flex items-center justify-center text-lg ${
-                                selected ? 'bg-white text-primary-700' : 'bg-primary-50 text-primary-700'
-                              }`}
+                              className={`w-10 h-10 rounded-full flex items-center justify-center text-lg ${selected ? 'bg-white text-primary-700' : 'bg-primary-50 text-primary-700'
+                                }`}
                               style={{ color: selected ? undefined : type.color }}
                             >
                               {type.icon}
@@ -245,11 +249,10 @@ const CustomOrder = () => {
                               <button
                                 key={range.value}
                                 onClick={() => setFormData({ ...formData, budget: range.value })}
-                                className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${
-                                  selected
+                                className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${selected
                                     ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white border-primary-600 shadow-lg shadow-primary-500/30'
                                     : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
-                                }`}
+                                  }`}
                               >
                                 {range.label}
                               </button>
@@ -267,11 +270,10 @@ const CustomOrder = () => {
                               <button
                                 key={time.value}
                                 onClick={() => setFormData({ ...formData, timeline: time.value })}
-                                className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${
-                                  selected
+                                className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${selected
                                     ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white border-primary-600 shadow-lg shadow-primary-500/30'
                                     : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
-                                }`}
+                                  }`}
                               >
                                 {time.label}
                               </button>
@@ -302,11 +304,10 @@ const CustomOrder = () => {
               <button
                 onClick={handleBack}
                 disabled={step === 1}
-                className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold border transition-all ${
-                  step === 1
+                className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold border transition-all ${step === 1
                     ? 'border-slate-200 text-slate-400 cursor-not-allowed bg-slate-50'
                     : 'border-slate-300 text-slate-800 hover:border-primary-600 hover:text-primary-700 hover:-translate-y-0.5'
-                }`}
+                  }`}
               >
                 <FiArrowLeft /> Back
               </button>
@@ -315,11 +316,10 @@ const CustomOrder = () => {
                 <button
                   onClick={handleNext}
                   disabled={!isStepValid()}
-                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
-                    !isStepValid()
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${!isStepValid()
                       ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
                       : 'bg-gradient-to-r from-primary-500 to-primary-700 text-white hover:-translate-y-0.5 shadow-lg shadow-primary-500/40'
-                  }`}
+                    }`}
                 >
                   Next <FiArrowRight />
                 </button>
@@ -327,11 +327,10 @@ const CustomOrder = () => {
                 <button
                   onClick={handleSubmit}
                   disabled={!isStepValid()}
-                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
-                    !isStepValid()
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${!isStepValid()
                       ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
                       : 'bg-gradient-to-r from-primary-500 to-primary-700 text-white hover:-translate-y-0.5 shadow-lg shadow-primary-500/40'
-                  }`}
+                    }`}
                 >
                   Submit request <FiSend />
                 </button>

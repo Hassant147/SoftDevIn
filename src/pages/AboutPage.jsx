@@ -45,6 +45,8 @@ const stats = [
   { number: 3, suffix: '+', label: 'Regions Active' },
 ];
 
+import SeoWrapper from '../components/SeoWrapper';
+
 const About = () => {
   const [statsVisible, setStatsVisible] = useState(false);
   const statsRef = useRef(null);
@@ -69,6 +71,11 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-neutral-900">
+      <SeoWrapper
+        title="About Us - Software Development Agency"
+        description="Learn about SoftDevIn's mission to deliver enterprise-grade software with a relentless focus on quality, speed, and transparency."
+        keywords="about softdevin, software agency mission, tech team pakistan, software development company"
+      />
       {/* Hero Section */}
       <section className="section pt-28 pb-12">
         <div className="container max-w-6xl">

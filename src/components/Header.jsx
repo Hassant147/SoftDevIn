@@ -12,6 +12,7 @@ const Header = () => {
   const navItems = [
     { link: 'Home', path: '/' },
     { link: 'Work', path: '/work' },
+    { link: 'Blog', path: '/blog' },
     { link: 'About', path: '/about' },
     { link: 'Careers', path: '/careers' },
     { link: 'Technologies', path: '/technologies' },
@@ -20,7 +21,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
-      <div className="w-[92%] mx-auto">
+      <div className="content-container">
         <nav className="flex items-center justify-between px-2 sm:px-4 py-2">
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="SoftDevIn Logo" className="h-9 w-auto" />

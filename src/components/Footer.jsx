@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <>
       <footer className="bg-white border-t border-slate-200 text-slate-700">
-        <div className="w-[90%] mx-auto py-12">
+        <div className="content-container py-12">
           <div className="flex flex-col gap-10">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
               <div className="flex items-center gap-3">
@@ -32,6 +32,7 @@ const Footer = () => {
               <div className="space-y-3">
                 <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-[0.14em]">Company</h4>
                 <div className="flex flex-col gap-2 text-sm text-slate-600">
+                  <Link to="/blog" className="hover:text-primary-700">Blog</Link>
                   <Link to="/about" className="hover:text-primary-700">About</Link>
                   <Link to="/careers" className="hover:text-primary-700">Careers</Link>
                   <Link to="/technologies" className="hover:text-primary-700">Technologies</Link>
@@ -50,7 +51,7 @@ const Footer = () => {
             </div>
 
             <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-slate-500">
-              <span>© 2024 SoftDevIn. All rights reserved.</span>
+              <span>© 2023 SoftDevIn. All rights reserved.</span>
               <span>Privacy · Terms</span>
             </div>
           </div>

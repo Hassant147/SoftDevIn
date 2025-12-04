@@ -1,15 +1,46 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FaArrowRight, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { caseStudies } from '../export';
+
+import SeoWrapper from '../components/SeoWrapper';
+import SchemaJsonLd from '../components/SchemaJsonLd';
+import OptimizedImage from '../components/OptimizedImage';
 
 const Work = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://softdevin.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Our Work",
+                "item": "https://softdevin.com/work"
+            }
+        ]
+    };
+
     return (
-        <div className="bg-white min-h-screen pt-20">
+        <article className="bg-white min-h-screen pt-20">
+            <SeoWrapper
+                title="Our Work - Case Studies & Portfolio"
+                description="Explore SoftDevIn's portfolio of enterprise-grade software, mobile apps, and AI solutions delivered for global clients."
+                keywords="software portfolio, case studies, app development projects, react projects"
+            />
+            <SchemaJsonLd schema={breadcrumbSchema} />
+
             {/* Hero Section */}
             <section className="relative bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 py-20 overflow-hidden border-b border-slate-200">
                 <div className="absolute inset-0 overflow-hidden">
@@ -18,6 +49,13 @@ const Work = () => {
                 </div>
 
                 <div className="content-container relative z-10 text-center space-y-4">
+                    <nav aria-label="Breadcrumb" className="mb-4">
+                        <ol className="inline-flex items-center gap-2 text-sm text-slate-600">
+                            <li><Link to="/" className="hover:text-primary-700">Home</Link></li>
+                            <li>/</li>
+                            <li className="text-slate-900 font-semibold">Our Work</li>
+                        </ol>
+                    </nav>
                     <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
                         Case Studies
                     </span>
@@ -56,24 +94,25 @@ const Work = () => {
                                 {/* Image Side */}
                                 <div className="w-full lg:w-1/2">
                                     <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-slate-200 group">
-                                        <img
+                                        <OptimizedImage
                                             src={project.image}
-                                            alt={project.title}
+                                            alt={`${project.title} - ${project.category} case study screenshot`}
                                             className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                            aspectRatio={16 / 10}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-8">
                                             <div className="flex gap-4">
                                                 <a
                                                     href={project.demoLink}
                                                     className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-slate-900 transition-all"
-                                                    aria-label="View Demo"
+                                                    aria-label={`View ${project.title} demo`}
                                                 >
                                                     <FaExternalLinkAlt />
                                                 </a>
                                                 <a
                                                     href={project.repoLink}
                                                     className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-slate-900 transition-all"
-                                                    aria-label="View Code"
+                                                    aria-label={`View ${project.title} source code`}
                                                 >
                                                     <FaGithub />
                                                 </a>
@@ -96,17 +135,17 @@ const Work = () => {
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                                         <div>
-                                            <h4 className="font-semibold text-slate-900 mb-2">The Challenge</h4>
+                                            <h3 className="font-semibold text-slate-900 mb-2">The Challenge</h3>
                                             <p className="text-slate-600 text-sm">{project.challenge}</p>
                                         </div>
                                         <div>
-                                            <h4 className="font-semibold text-slate-900 mb-2">The Solution</h4>
+                                            <h3 className="font-semibold text-slate-900 mb-2">The Solution</h3>
                                             <p className="text-slate-600 text-sm">{project.solution}</p>
                                         </div>
                                     </div>
 
                                     <div className="border-t border-slate-200 pt-6">
-                                        <h4 className="font-semibold text-slate-900 mb-4">Technologies Used</h4>
+                                        <h3 className="font-semibold text-slate-900 mb-4">Technologies Used</h3>
                                         <div className="flex flex-wrap gap-2">
                                             {project.technologies.map((tech, i) => (
                                                 <span
@@ -122,10 +161,22 @@ const Work = () => {
                             </motion.div>
                         ))}
                     </div>
+
+                    {/* CTA Section */}
+                    <div className="mt-16 text-center">
+                        <p className="text-slate-600 mb-4">Ready to build something great together?</p>
+                        <Link
+                            to="/custom-order"
+                            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 text-white px-6 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5 shadow-md"
+                        >
+                            Start your project <FaArrowRight />
+                        </Link>
+                    </div>
                 </div>
             </section>
-        </div>
+        </article>
     );
 };
 
 export default Work;
+
