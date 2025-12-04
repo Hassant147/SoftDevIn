@@ -44,6 +44,7 @@ const steps = [
 ];
 
 import SeoWrapper from '../components/SeoWrapper';
+import FAQ from '../components/FAQ';
 
 const CustomOrder = () => {
   const [step, setStep] = useState(1);
@@ -162,8 +163,8 @@ const CustomOrder = () => {
                             key={type.value}
                             onClick={() => setFormData({ ...formData, projectType: type.value })}
                             className={`text-left rounded-2xl border transition-all p-4 flex flex-col gap-2 hover:-translate-y-0.5 ${selected
-                                ? 'border-primary-600 shadow-lg bg-gradient-to-br from-primary-500 to-primary-700 text-white'
-                                : 'border-slate-200 bg-white hover:border-slate-300 shadow-sm'
+                              ? 'border-primary-600 shadow-lg bg-gradient-to-br from-primary-500 to-primary-700 text-white'
+                              : 'border-slate-200 bg-white hover:border-slate-300 shadow-sm'
                               }`}
                           >
                             <div
@@ -250,8 +251,8 @@ const CustomOrder = () => {
                                 key={range.value}
                                 onClick={() => setFormData({ ...formData, budget: range.value })}
                                 className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${selected
-                                    ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white border-primary-600 shadow-lg shadow-primary-500/30'
-                                    : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
+                                  ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white border-primary-600 shadow-lg shadow-primary-500/30'
+                                  : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
                                   }`}
                               >
                                 {range.label}
@@ -271,8 +272,8 @@ const CustomOrder = () => {
                                 key={time.value}
                                 onClick={() => setFormData({ ...formData, timeline: time.value })}
                                 className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${selected
-                                    ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white border-primary-600 shadow-lg shadow-primary-500/30'
-                                    : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
+                                  ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white border-primary-600 shadow-lg shadow-primary-500/30'
+                                  : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'
                                   }`}
                               >
                                 {time.label}
@@ -305,8 +306,8 @@ const CustomOrder = () => {
                 onClick={handleBack}
                 disabled={step === 1}
                 className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold border transition-all ${step === 1
-                    ? 'border-slate-200 text-slate-400 cursor-not-allowed bg-slate-50'
-                    : 'border-slate-300 text-slate-800 hover:border-primary-600 hover:text-primary-700 hover:-translate-y-0.5'
+                  ? 'border-slate-200 text-slate-400 cursor-not-allowed bg-slate-50'
+                  : 'border-slate-300 text-slate-800 hover:border-primary-600 hover:text-primary-700 hover:-translate-y-0.5'
                   }`}
               >
                 <FiArrowLeft /> Back
@@ -317,8 +318,8 @@ const CustomOrder = () => {
                   onClick={handleNext}
                   disabled={!isStepValid()}
                   className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${!isStepValid()
-                      ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-primary-500 to-primary-700 text-white hover:-translate-y-0.5 shadow-lg shadow-primary-500/40'
+                    ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-primary-500 to-primary-700 text-white hover:-translate-y-0.5 shadow-lg shadow-primary-500/40'
                     }`}
                 >
                   Next <FiArrowRight />
@@ -328,8 +329,8 @@ const CustomOrder = () => {
                   onClick={handleSubmit}
                   disabled={!isStepValid()}
                   className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${!isStepValid()
-                      ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-primary-500 to-primary-700 text-white hover:-translate-y-0.5 shadow-lg shadow-primary-500/40'
+                    ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-primary-500 to-primary-700 text-white hover:-translate-y-0.5 shadow-lg shadow-primary-500/40'
                     }`}
                 >
                   Submit request <FiSend />
@@ -376,8 +377,16 @@ const CustomOrder = () => {
           </div>
         </div>
       </div>
+
+      {/* FAQ Section */}
+      <FAQ
+        title="Common Questions About Working With Us"
+        subtitle="Get answers to frequently asked questions about our process, timeline, and engagement models."
+        className="bg-gradient-to-b from-slate-50 to-white border-t border-slate-200"
+      />
     </div>
   );
 };
 
 export default CustomOrder;
+

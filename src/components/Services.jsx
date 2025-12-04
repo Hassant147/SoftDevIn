@@ -1,5 +1,6 @@
 // Services.jsx
 import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { servicesinfo } from '../export';
 import Slider from "react-slick";
 import { motion } from 'framer-motion';
@@ -87,12 +88,12 @@ const Services = () => {
                 </motion.p>
 
                 {/* Services Slider */}
-                <div className="w-full mx-auto pb-10 ">
+                <div className="w-full mx-auto pb-10 [&_.slick-track]:flex [&_.slick-slide]:h-auto [&_.slick-slide>div]:h-full">
                     <Slider {...settings} ref={sliderRef}>
                         {servicesinfo.map((item, index) => (
-                            <div key={index} className="px-2">
+                            <div key={index} className="px-2 h-full">
                                 <motion.div
-                                    className="bg-white my-5 border border-slate-200 rounded-3xl p-8 sm:py-10 sm:px-6 md:py-12 md:px-8 flex flex-col items-start justify-between h-full min-h-[340px] lg:min-h-[360px] w-full transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-md shadow-slate-200/70"
+                                    className="bg-white my-5 border border-slate-200 rounded-3xl p-8 sm:py-10 sm:px-6 md:py-12 md:px-8 flex h-full min-h-[380px] md:min-h-[420px] lg:min-h-[440px] flex-col items-start justify-between gap-4 w-full transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-md shadow-slate-200/70"
                                     data-aos="zoom-in-up"
                                     data-aos-delay={300 + index * 100} // Staggered animation delays
                                     initial={{ opacity: 0, y: 50 }}
@@ -122,19 +123,39 @@ const Services = () => {
                 </div>
 
                 {/* Custom Dots Indicator */}
-                <div className="flex gap-2 py-1">
+                <div className="flex gap-2 py-1" role="tablist" aria-label="Service slides">
                     {servicesinfo.map((_, idx) => (
-                        <motion.div
+                        <motion.button
                             key={idx}
-                            className={`w-3 sm:w-4 h-3 sm:h-4 rounded-full cursor-pointer`}
+                            type="button"
+                            role="tab"
+                            aria-selected={currentSlide === idx}
+                            aria-label={`Go to service ${idx + 1}`}
+                            className="w-3 sm:w-4 h-3 sm:h-4 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2"
                             onClick={() => handleDotClick(idx)}
                             animate={{
                                 backgroundColor: currentSlide === idx ? '#7c3aed' : 'rgba(148, 163, 184, 0.5)',
                                 scale: currentSlide === idx ? 1.25 : 1,
                             }}
                             transition={{ duration: 0.3 }}
-                        ></motion.div>
+                        />
                     ))}
+                </div>
+
+                {/* Internal Linking CTAs */}
+                <div className="flex flex-wrap justify-center gap-4 mt-8">
+                    <Link
+                        to="/work"
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 text-slate-900 font-semibold hover:bg-slate-50 hover:-translate-y-0.5 transition-all"
+                    >
+                        See our case studies →
+                    </Link>
+                    <Link
+                        to="/custom-order"
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 text-white font-semibold shadow-md hover:-translate-y-0.5 transition-transform"
+                    >
+                        Start your project
+                    </Link>
                 </div>
             </div>
         </section>

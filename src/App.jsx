@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Loader3D from './components/Loader3D';
+import { AnalyticsProvider, trackPageView } from './components/AnalyticsProvider';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -19,12 +20,14 @@ const Work = lazy(() => import('./pages/Work'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 
-// Scroll to top on route change
+// Scroll to top on route change and track page views
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Track page view for analytics
+    trackPageView(pathname);
   }, [pathname]);
 
   return null;
@@ -96,9 +99,11 @@ const AppContent = () => {
 const App = () => {
   return (
     <HelmetProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <AnalyticsProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </AnalyticsProvider>
     </HelmetProvider>
   );
 };
