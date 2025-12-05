@@ -48,7 +48,7 @@ const stats = [
   { number: 3, suffix: '+', label: 'Regions Active' },
 ];
 
-import SeoWrapper from '../components/SeoWrapper';
+
 
 const About = () => {
   const [statsVisible, setStatsVisible] = useState(false);
@@ -165,7 +165,7 @@ const About = () => {
       <section className="section py-20 md:py-24">
         <div className="container max-w-6xl">
           <div className="text-center space-y-3 mb-12">
-            <SectionTitle normalText=\"Our Core\" highlightText=\"Values\" />
+            <SectionTitle normalText="Our Core" highlightText="Values" />
             <p className="text-neutral-600 text-lg max-w-3xl mx-auto">
               Principles that shape how we build, communicate, and deliver for our partners.
             </p>
@@ -209,7 +209,7 @@ const About = () => {
                 const left = index % 2 === 0;
                 return (
                   <motion.div
-                    key={item.year}
+                    key={`${item.year}-${item.title}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

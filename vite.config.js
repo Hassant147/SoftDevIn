@@ -14,5 +14,10 @@ export default defineConfig({
       '~': path.resolve(__dirname, 'node_modules'),
     },
   },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    minimize: 'terser',
+  },
 })
 

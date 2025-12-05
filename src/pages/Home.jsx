@@ -1,7 +1,8 @@
 // Home page - combines all homepage sections
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
+// Lazy load non-critical sections
 import Services from '../components/Services';
 import TechStack from '../components/TechStack';
 import Pricing from '../components/Pricing';
@@ -11,6 +12,7 @@ import Contact from '../components/Contact';
 
 import SeoWrapper from '../components/SeoWrapper';
 import SchemaJsonLd from '../components/SchemaJsonLd';
+import LazySection from '../components/common/LazySection';
 
 const Home = () => {
     const organizationSchema = {
@@ -90,18 +92,36 @@ const Home = () => {
             />
             <SchemaJsonLd schema={organizationSchema} />
 
+            {/* Hero and About are critical for LCP/ATF, keep them eager */}
             <Hero />
             <About />
-            <Services />
-            <TechStack />
-            <Pricing />
-            {/* Ensure clear separation from testimonials */}
-            <FeaturedWork />
-            <Clients />
-            <Contact />
+
+            {/* Lazy load remaining sections to reduce TBT and initial bundle execution */}
+            <LazySection>
+                <Services />
+            </LazySection>
+
+            <LazySection>
+                <TechStack />
+            </LazySection>
+
+            <LazySection>
+                <Pricing />
+            </LazySection>
+
+            <LazySection minHeight="60vh">
+                <FeaturedWork />
+            </LazySection>
+
+            <LazySection>
+                <Clients />
+            </LazySection>
+
+            <LazySection>
+                <Contact />
+            </LazySection>
         </>
     );
 };
 
 export default Home;
-

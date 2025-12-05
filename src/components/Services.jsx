@@ -72,9 +72,13 @@ const ServiceCard = ({ item, index }) => {
                     {/* Number badge */}
                     <motion.span
                         className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full text-xs font-medium"
+                        initial={{
+                            backgroundColor: 'hsl(220, 18%, 95%)',
+                            color: 'hsl(220, 12%, 60%)',
+                        }}
                         animate={{
                             backgroundColor: isHovered ? 'hsl(245, 75%, 58%)' : 'hsl(220, 18%, 95%)',
-                            color: isHovered ? 'white' : 'hsl(220, 12%, 60%)',
+                            color: isHovered ? 'hsl(0, 0%, 100%)' : 'hsl(220, 12%, 60%)',
                         }}
                         transition={{ duration: 0.3 }}
                     >
