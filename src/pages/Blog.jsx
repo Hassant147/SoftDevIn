@@ -67,13 +67,13 @@ const Blog = () => {
       />
       <SchemaJsonLd schema={listSchema} />
 
-      <section className="relative isolate overflow-hidden">
+      <section className="page-hero relative isolate overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-70">
           <div className="absolute -left-10 top-10 h-64 w-64 rounded-full bg-primary-100 blur-3xl" />
           <div className="absolute right-10 -bottom-10 h-80 w-80 rounded-full bg-accent-purple/20 blur-3xl" />
         </div>
 
-        <div className="content-container relative z-10 max-w-6xl space-y-10 pb-14 pt-24">
+        <div className="content-container relative z-10 max-w-6xl space-y-10">
           <div className="max-w-3xl space-y-4">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
               Insights

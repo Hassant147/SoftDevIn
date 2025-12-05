@@ -41,20 +41,18 @@ const Careers = () => {
     const departments = ['all', ...Array.from(new Set(jobs.map(job => job.department)))];
 
     return (
-        <div className="min-h-screen bg-neutral-50">
+        <div className="page-wrapper">
             {/* Hero Section */}
-            <section className="section pt-32 pb-20 md:pb-24 bg-white">
-                <div className="container">
-                    <div className="text-center space-y-3">
-                        <SectionLabel>Careers</SectionLabel>
-                        <SectionTitle normalText="Join our global" highlightText="team" Tag="h1" />
-                    </div>
+            <section className="page-hero bg-white">
+                <div className="content-container page-hero__content">
+                    <SectionLabel>Careers</SectionLabel>
+                    <SectionTitle normalText="Join our global" highlightText="team" Tag="h1" />
 
                     <motion.p
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-xl md:text-2xl text-neutral-600 text-center max-w-3xl mx-auto"
+                        className="page-hero__description"
                     >
                         Build the future with teammates who care about quality, thoughtful design, and shipping real outcomes for enterprise clients.
                     </motion.p>
@@ -62,8 +60,8 @@ const Careers = () => {
             </section>
 
             {/* Benefits */}
-            <section className="section pb-20 md:pb-24 bg-neutral-50">
-                <div className="container">
+            <section className="section-container bg-neutral-50">
+                <div className="content-container">
                     <div className="text-center space-y-3 mb-6">
                         <SectionLabel>Benefits</SectionLabel>
                         <SectionTitle normalText="Why" highlightText="SoftDevIn?" />
@@ -91,8 +89,8 @@ const Careers = () => {
             </section>
 
             {/* Job Listings */}
-            <section className="section pb-20 md:pb-24 bg-white">
-                <div className="container">
+            <section className="section-container bg-white">
+                <div className="content-container">
                     <div className="text-center space-y-3 mb-6">
                         <SectionLabel>Roles</SectionLabel>
                         <SectionTitle normalText="Open" highlightText="Positions" />

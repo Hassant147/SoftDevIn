@@ -35,7 +35,7 @@ const Work = () => {
     };
 
     return (
-        <article className="bg-white min-h-screen pt-20">
+        <article className="bg-white min-h-screen">
             <SeoWrapper
                 title="Our Work - Case Studies & Portfolio"
                 description="Explore SoftDevIn's portfolio of enterprise-grade software, mobile apps, and AI solutions delivered for global clients."
@@ -44,13 +44,13 @@ const Work = () => {
             <SchemaJsonLd schema={breadcrumbSchema} />
 
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 py-20 md:py-24 overflow-hidden border-b border-slate-200">
+            <section className="page-hero relative bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 overflow-hidden border-b border-slate-200">
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary-100 rounded-full blur-3xl opacity-50"></div>
                     <div className="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-100 rounded-full blur-3xl opacity-40"></div>
                 </div>
 
-                <div className="content-container relative z-10 text-center space-y-4">
+                <div className="content-container page-hero__content relative z-10">
                     {/* <nav aria-label="Breadcrumb" className="mb-4">
                         <ol className="inline-flex items-center gap-2 text-sm text-slate-600">
                             <li><Link to="/" className="hover:text-primary-700">Home</Link></li>
@@ -64,7 +64,7 @@ const Work = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto"
+                        className="page-hero__description"
                     >
                         Explore our portfolio of enterprise-grade solutions, from AI-powered analytics to global e-commerce platforms.
                     </motion.p>
@@ -172,4 +172,3 @@ const Work = () => {
 };
 
 export default Work;
-

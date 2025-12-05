@@ -78,8 +78,10 @@ export const AnalyticsProvider = ({ children }) => {
     useEffect(() => {
         if (measurementId) {
             initGA4(measurementId);
-            console.log('[Analytics] GA4 initialized with ID:', measurementId);
-        } else {
+            if (import.meta.env.DEV) {
+                console.log('[Analytics] GA4 initialized');
+            }
+        } else if (import.meta.env.DEV) {
             console.log('[Analytics] No GA_MEASUREMENT_ID found. Analytics disabled.');
         }
     }, [measurementId]);

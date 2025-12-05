@@ -54,25 +54,23 @@ const Technologies = () => {
         : technologies.filter(tech => tech.category === activeCategory);
 
     return (
-        <div className="min-h-screen bg-neutral-50">
+        <div className="page-wrapper">
             <SeoWrapper
                 title="Technology Stack - React, Node.js, Python, AI"
                 description="Our modern tech stack includes React, Next.js, Node.js, Python, and AI frameworks like TensorFlow. We choose the right tools for scalable software."
                 keywords="react, node.js, python, tensorflow, aws, docker, kubernetes, tech stack"
             />
             {/* Hero Section */}
-            <section className="section pt-32 pb-20 md:pb-24 bg-white">
-                <div className="container">
-                    <div className="text-center space-y-3">
-                        <SectionLabel>Technology</SectionLabel>
-                        <SectionTitle normalText="Our Technology" highlightText="Stack" Tag="h1" />
-                    </div>
+            <section className="page-hero bg-white">
+                <div className="content-container page-hero__content">
+                    <SectionLabel>Technology</SectionLabel>
+                    <SectionTitle normalText="Our Technology" highlightText="Stack" Tag="h1" />
 
                     <motion.p
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-xl md:text-2xl text-neutral-600 text-center max-w-3xl mx-auto"
+                        className="page-hero__description"
                     >
                         We select our stack based on stability, ecosystem maturity, and performance. No resume-driven development—just proven engineering tools.
                     </motion.p>
@@ -80,8 +78,8 @@ const Technologies = () => {
             </section>
 
             {/* Category Filter */}
-            <section className="pb-12 bg-white border-b border-neutral-200">
-                <div className="container">
+            <section className="bg-white border-b border-neutral-200 py-12">
+                <div className="content-container">
                     <div className="flex flex-wrap justify-center gap-3">
                         {categories.map((category) => (
                             <button
@@ -101,8 +99,8 @@ const Technologies = () => {
             </section>
 
             {/* Technologies Grid */}
-            <section className="section py-20 md:py-24">
-                <div className="container">
+            <section className="section-container">
+                <div className="content-container">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                         {filteredTech.map((tech, index) => (
                             <motion.div
@@ -131,8 +129,8 @@ const Technologies = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="section bg-gradient-to-b from-white via-slate-50 to-white py-20 md:py-24 border-t border-slate-200">
-                <div className="container">
+            <section className="section-container bg-gradient-to-b from-white via-slate-50 to-white border-t border-slate-200">
+                <div className="content-container">
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}

@@ -73,27 +73,27 @@ const About = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-neutral-900">
+    <div className="page-wrapper">
       <SeoWrapper
         title="About Us - Software Development Agency"
         description="Learn about SoftDevIn's mission to deliver enterprise-grade software with a relentless focus on quality, speed, and transparency."
         keywords="about softdevin, software agency mission, tech team pakistan, software development company"
       />
       {/* Hero Section */}
-      <section className="section pt-32 pb-20 md:pb-24">
-        <div className="container max-w-6xl">
+      <section className="page-hero">
+        <div className="content-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center space-y-6"
+            className="page-hero__content space-y-6"
           >
             <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-sm font-semibold text-primary-700">
               <FiActivity className="text-primary-600" />
               Our story, in motion
             </p>
             <SectionTitle normalText="About" highlightText="SoftDevIn" Tag="h1" />
-            <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+            <p className="page-hero__description">
               Founded in 2023, we bridge advanced engineering with practical business outcomes across the USA, UK, and Pakistan—shipping secure, scalable software for regulated and high-growth teams.
             </p>
           </motion.div>
@@ -101,8 +101,8 @@ const About = () => {
       </section>
 
       {/* Animated Stats */}
-      <section className="section pb-20 md:pb-24" ref={statsRef}>
-        <div className="container max-w-6xl space-y-8">
+      <section className="section-container" ref={statsRef}>
+        <div className="content-container max-w-6xl space-y-8">
           <div className="text-center space-y-2">
             <SectionLabel>By the numbers</SectionLabel>
             <SectionTitle normalText="Proven" highlightText="delivery" />
@@ -131,8 +131,8 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="section bg-white py-16">
-        <div className="container max-w-6xl grid md:grid-cols-2 gap-8">
+      <section className="section-container bg-white">
+        <div className="content-container max-w-6xl grid md:grid-cols-2 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -162,8 +162,8 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="section py-20 md:py-24">
-        <div className="container max-w-6xl">
+      <section className="section-container">
+        <div className="content-container max-w-6xl">
           <div className="text-center space-y-3 mb-12">
             <SectionTitle normalText="Our Core" highlightText="Values" />
             <p className="text-neutral-600 text-lg max-w-3xl mx-auto">
@@ -192,8 +192,8 @@ const About = () => {
       </section>
 
       {/* Modern Roadmap */}
-      <section className="section bg-white py-20 md:py-24">
-        <div className="container max-w-6xl">
+      <section className="section-container bg-white">
+        <div className="content-container max-w-6xl">
           <div className="text-center space-y-3 mb-12">
             <SectionLabel>Trajectory</SectionLabel>
             <SectionTitle normalText="Our" highlightText="Journey" />

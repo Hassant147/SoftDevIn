@@ -581,6 +581,23 @@ button,
   z-index: 10;
 }
 
+/* Shared page layout helpers to keep hero sections aligned */
+.page-wrapper {
+  @apply min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-neutral-900;
+}
+
+.page-hero {
+  @apply relative pt-24 md:pt-32 pb-16 md:pb-24;
+}
+
+.page-hero__content {
+  @apply max-w-5xl mx-auto text-center space-y-4;
+}
+
+.page-hero__description {
+  @apply text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto;
+}
+
 /* Hero 3D cards */
 .tilt-card {
   position: absolute;

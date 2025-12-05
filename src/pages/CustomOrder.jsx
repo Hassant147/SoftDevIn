@@ -89,34 +89,39 @@ const CustomOrder = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="page-wrapper">
       <SeoWrapper
         title="Start a Project - Custom Software Development"
         description="Tell us about your project. We build custom web apps, mobile apps, and AI solutions tailored to your business needs."
         keywords="hire developers, custom software quote, app development cost, software project brief"
       />
-      <div className="max-w-6xl mx-auto px-4 py-20 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-3 mb-10 text-center"
-        >
-          <div className="mb-6">
-            <SectionLabel>
-              <FiSend className="inline" /> Start a project
-            </SectionLabel>
-          </div>
-          <SectionTitle
-            normalText="Build with a modern, minimal"
-            highlightText="brief"
-            Tag="h1"
-          />
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Share your idea and constraints. We will reply with a project outline, timeline, and team fit within one day.
-          </p>
-        </motion.div>
+      <section className="page-hero bg-slate-50 border-b border-slate-200">
+        <div className="content-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="page-hero__content"
+          >
+            <div className="mb-4">
+              <SectionLabel>
+                <FiSend className="inline" /> Start a project
+              </SectionLabel>
+            </div>
+            <SectionTitle
+              normalText="Build with a modern, minimal"
+              highlightText="brief"
+              Tag="h1"
+            />
+            <p className="page-hero__description">
+              Share your idea and constraints. We will reply with a project outline, timeline, and team fit within one day.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8">
+      <section className="section-container">
+        <div className="content-container max-w-6xl">
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8">
           {/* Form Card */}
           <div className="bg-white border border-slate-200 rounded-3xl shadow-lg p-6 md:p-8">
             {/* Stepper */}
@@ -382,8 +387,9 @@ const CustomOrder = () => {
               </a>
             </div>
           </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* FAQ Section */}
       <FAQ
@@ -396,4 +402,3 @@ const CustomOrder = () => {
 };
 
 export default CustomOrder;
-
