@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import Slider from "react-slick";
 import { testidata } from '../export';
 import { motion } from 'framer-motion';
+import SectionLabel from './SectionLabel';
 
 // Detect low-end devices to disable heavy animations
 const isLowEndDevice = typeof navigator !== 'undefined' && (!navigator.hardwareConcurrency || navigator.hardwareConcurrency <= 4);
@@ -37,9 +38,9 @@ const Clients = () => {
         >
 
             {!isLowEndDevice && (
-            <div className="pointer-events-none absolute w-full h-full top-0 left-0 overflow-hidden z-[-1]">
-                <motion.div
-                    className="
+                <div className="pointer-events-none absolute w-full h-full top-0 left-0 overflow-hidden z-[-1]">
+                    <motion.div
+                        className="
             hidden md:block
             absolute
             w-24 sm:w-32 md:w-40 
@@ -51,11 +52,11 @@ const Clients = () => {
             top-10 
             left-5
           "
-                    animate={{ y: [0, 20, 0], x: [0, -20, 0] }}
-                    transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-                />
-                <motion.div
-                    className="
+                        animate={{ y: [0, 20, 0], x: [0, -20, 0] }}
+                        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                    <motion.div
+                        className="
             hidden md:block
             absolute
             w-32 sm:w-40 md:w-48 
@@ -67,17 +68,15 @@ const Clients = () => {
             bottom-10 
             right-10
           "
-                    animate={{ y: [0, -20, 0], x: [0, 20, 0] }}
-                    transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-                />
-            </div>
+                        animate={{ y: [0, -20, 0], x: [0, 20, 0] }}
+                        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                </div>
             )}
 
             <div className="content-container flex flex-col items-center justify-center gap-12">
                 <div className="text-center flex flex-col gap-4 max-w-2xl mx-auto">
-                    <span className="self-center inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary-50 border border-primary-100 text-[11px] font-semibold tracking-[0.18em] text-primary-700 uppercase">
-                        Testimonials
-                    </span>
+                    <SectionLabel className="self-center">Testimonials</SectionLabel>
                     <h1
                         data-aos="fade-up"
                         data-aos-delay="300"

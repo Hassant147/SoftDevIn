@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { engagementModels } from '../export';
 import { FaChevronCircleRight } from "react-icons/fa";
 import { motion } from 'framer-motion';
+import SectionLabel from './SectionLabel';
 
 // Unified icon badge for pricing bullets
 const GradientIcon = ({ children, size = 60, className = '' }) => (
@@ -84,9 +85,7 @@ const Pricing = () => {
         >
             <div className="content-container flex flex-col items-center">
                 <div className="text-center space-y-3 mb-10">
-                    <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-                        Engagement Models
-                    </p>
+                    <SectionLabel>Engagement Models</SectionLabel>
                     <h1 className="section-title">
                         Flexible ways to partner
                     </h1>
@@ -96,7 +95,7 @@ const Pricing = () => {
                 </div>
 
                 <div className="w-full flex flex-col items-center">
-                    <div className="w-full grid lg:grid-cols-3 gap-8 justify-center">
+                    <div className="w-full grid lg:grid-cols-3 gap-6 lg:gap-8 justify-center">
                         {engagementModels.map((item, index) => (
                             <PricingCard key={index} item={item} />
                         ))}

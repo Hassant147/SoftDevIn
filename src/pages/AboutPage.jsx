@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 import { FiCpu, FiUsers, FiZap, FiShield, FiActivity } from 'react-icons/fi';
+import SeoWrapper from '../components/SeoWrapper';
+import SectionLabel from '../components/SectionLabel';
+import SectionTitle from '../components/SectionTitle';
 
 const timeline = [
   {
@@ -77,7 +80,7 @@ const About = () => {
         keywords="about softdevin, software agency mission, tech team pakistan, software development company"
       />
       {/* Hero Section */}
-      <section className="section pt-28 pb-12">
+      <section className="section pt-32 pb-20 md:pb-24">
         <div className="container max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -89,9 +92,7 @@ const About = () => {
               <FiActivity className="text-primary-600" />
               Our story, in motion
             </p>
-            <h1 className="section-title">
-              About SoftDevIn
-            </h1>
+            <SectionTitle normalText="About" highlightText="SoftDevIn" Tag="h1" />
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
               Founded in 2023, we bridge advanced engineering with practical business outcomes across the USA, UK, and Pakistan—shipping secure, scalable software for regulated and high-growth teams.
             </p>
@@ -100,15 +101,13 @@ const About = () => {
       </section>
 
       {/* Animated Stats */}
-      <section className="section pb-14" ref={statsRef}>
+      <section className="section pb-20 md:pb-24" ref={statsRef}>
         <div className="container max-w-6xl space-y-8">
           <div className="text-center space-y-2">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-              By the numbers
-            </span>
-            <h2 className="section-title ">Proven delivery</h2>
+            <SectionLabel>By the numbers</SectionLabel>
+            <SectionTitle normalText="Proven" highlightText="delivery" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -163,17 +162,15 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="section py-16">
+      <section className="section py-20 md:py-24">
         <div className="container max-w-6xl">
           <div className="text-center space-y-3 mb-12">
-            <h2 className="section-title">
-              Our Core Values
-            </h2>
+            <SectionTitle normalText=\"Our Core\" highlightText=\"Values\" />
             <p className="text-neutral-600 text-lg max-w-3xl mx-auto">
               Principles that shape how we build, communicate, and deliver for our partners.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {values.map((value, idx) => (
               <motion.div
                 key={value.title}
@@ -195,15 +192,11 @@ const About = () => {
       </section>
 
       {/* Modern Roadmap */}
-      <section className="section bg-white py-16">
+      <section className="section bg-white py-20 md:py-24">
         <div className="container max-w-6xl">
           <div className="text-center space-y-3 mb-12">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-              Trajectory
-            </span>
-            <h2 className="section-title">
-              Our Journey
-            </h2>
+            <SectionLabel>Trajectory</SectionLabel>
+            <SectionTitle normalText="Our" highlightText="Journey" />
             <p className="text-neutral-600 text-lg max-w-3xl mx-auto">
               From our 2023 launch toward a global delivery network and our own compliant AI platform.
             </p>

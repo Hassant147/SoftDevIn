@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { FiLayers, FiCode, FiTrendingUp, FiUsers } from 'react-icons/fi';
+import SectionLabel from './SectionLabel';
 
 const pillars = [
     { title: 'Architecture first', copy: 'Designing fault-tolerant systems with secure defaults and observability built in.' },
@@ -38,9 +39,7 @@ const About = () => {
                     animate={controls}
                     className="space-y-5"
                 >
-                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.18em] uppercase">
-                        About SoftDevIn
-                    </span>
+                    <SectionLabel>About SoftDevIn</SectionLabel>
                     <h2 className="section-heading text-left">
                         Engineering depth with real-world impact
                     </h2>

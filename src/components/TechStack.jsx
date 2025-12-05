@@ -9,6 +9,7 @@ import {
 } from 'react-icons/si';
 import { motion } from 'framer-motion';
 import Marquee from 'react-fast-marquee';
+import SectionLabel from './SectionLabel';
 
 const techCategories = [
   {
@@ -84,9 +85,7 @@ const TechStack = () => {
     <section id="tech-stack" className="section-container bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 border-t border-slate-200">
       <div className="content-container flex flex-col items-center">
         <div className="text-center space-y-3">
-          <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-            Core stack
-          </p>
+          <SectionLabel>Core stack</SectionLabel>
           <motion.h1
             data-aos="fade-down"
             initial={{ opacity: 0, y: -30 }}

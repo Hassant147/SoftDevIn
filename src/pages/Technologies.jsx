@@ -5,6 +5,8 @@ import { FaReact, FaNodeJs, FaPython, FaAws, FaDocker, FaDatabase, FaMobileAlt, 
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiRedis, SiKubernetes, SiTensorflow, SiPytorch, SiGraphql, SiNestjs } from 'react-icons/si';
 
 import SeoWrapper from '../components/SeoWrapper';
+import SectionLabel from '../components/SectionLabel';
+import SectionTitle from '../components/SectionTitle';
 
 const Technologies = () => {
     const [activeCategory, setActiveCategory] = useState('all');
@@ -59,20 +61,11 @@ const Technologies = () => {
                 keywords="react, node.js, python, tensorflow, aws, docker, kubernetes, tech stack"
             />
             {/* Hero Section */}
-            <section className="section pt-32 pb-16 bg-white">
+            <section className="section pt-32 pb-20 md:pb-24 bg-white">
                 <div className="container">
                     <div className="text-center space-y-3">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-                            Technology
-                        </span>
-                        <motion.h1
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="section-title"
-                        >
-                            Our Technology Stack
-                        </motion.h1>
+                        <SectionLabel>Technology</SectionLabel>
+                        <SectionTitle normalText="Our Technology" highlightText="Stack" Tag="h1" />
                     </div>
 
                     <motion.p
@@ -108,9 +101,9 @@ const Technologies = () => {
             </section>
 
             {/* Technologies Grid */}
-            <section className="section py-20">
+            <section className="section py-20 md:py-24">
                 <div className="container">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                         {filteredTech.map((tech, index) => (
                             <motion.div
                                 key={tech.name}
@@ -138,7 +131,7 @@ const Technologies = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="section bg-gradient-to-b from-white via-slate-50 to-white py-20 border-t border-slate-200">
+            <section className="section bg-gradient-to-b from-white via-slate-50 to-white py-20 md:py-24 border-t border-slate-200">
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}

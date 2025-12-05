@@ -14,6 +14,8 @@ import {
     FiCheck,
     FiX
 } from 'react-icons/fi';
+import SectionLabel from '../components/SectionLabel';
+import SectionTitle from '../components/SectionTitle';
 
 const Careers = () => {
     const [selectedJob, setSelectedJob] = useState(null);
@@ -41,20 +43,11 @@ const Careers = () => {
     return (
         <div className="min-h-screen bg-neutral-50">
             {/* Hero Section */}
-            <section className="section pt-32 pb-16 bg-white">
+            <section className="section pt-32 pb-20 md:pb-24 bg-white">
                 <div className="container">
                     <div className="text-center space-y-3">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-                            Careers
-                        </span>
-                        <motion.h1
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="section-title"
-                        >
-                            Join our global team
-                        </motion.h1>
+                        <SectionLabel>Careers</SectionLabel>
+                        <SectionTitle normalText="Join our global" highlightText="team" Tag="h1" />
                     </div>
 
                     <motion.p
@@ -69,18 +62,14 @@ const Careers = () => {
             </section>
 
             {/* Benefits */}
-            <section className="section pb-16 bg-neutral-50">
+            <section className="section pb-20 md:pb-24 bg-neutral-50">
                 <div className="container">
                     <div className="text-center space-y-3 mb-6">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-                            Benefits
-                        </span>
-                        <h2 className="section-title" data-aos="fade-down">
-                            Why SoftDevIn?
-                        </h2>
+                        <SectionLabel>Benefits</SectionLabel>
+                        <SectionTitle normalText="Why" highlightText="SoftDevIn?" />
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                         {benefits.map((benefit, index) => (
                             <motion.div
                                 key={index}
@@ -102,15 +91,11 @@ const Careers = () => {
             </section>
 
             {/* Job Listings */}
-            <section className="section pb-16 bg-white">
+            <section className="section pb-20 md:pb-24 bg-white">
                 <div className="container">
                     <div className="text-center space-y-3 mb-6">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-                            Roles
-                        </span>
-                        <h2 className="section-title" data-aos="fade-down">
-                            Open Positions
-                        </h2>
+                        <SectionLabel>Roles</SectionLabel>
+                        <SectionTitle normalText="Open" highlightText="Positions" />
                     </div>
 
                     {/* Department Filter (hidden when no roles) */}

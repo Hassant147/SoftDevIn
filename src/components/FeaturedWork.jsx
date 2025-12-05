@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import { caseStudies } from '../export';
+import SectionLabel from './SectionLabel';
 
 const FeaturedWork = () => {
     // Display only the first 3 case studies
@@ -18,9 +19,7 @@ const FeaturedWork = () => {
 
             <div className="content-container relative z-10">
                 <div className="flex flex-col items-center text-center gap-4 mb-12">
-                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-                        Case Studies
-                    </span>
+                    <SectionLabel>Case Studies</SectionLabel>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +54,7 @@ const FeaturedWork = () => {
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {featuredProjects.map((project, index) => (
                         <motion.div
                             key={project.id}

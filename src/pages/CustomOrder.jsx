@@ -13,6 +13,11 @@ import {
   FiSend,
 } from 'react-icons/fi';
 
+import SeoWrapper from '../components/SeoWrapper';
+import FAQ from '../components/FAQ';
+import SectionLabel from '../components/SectionLabel';
+import SectionTitle from '../components/SectionTitle';
+
 const projectTypes = [
   { icon: <FiGlobe />, title: 'Web Application', value: 'web-app', description: 'Custom web platforms and SaaS experiences', color: '#7c3aed' },
   { icon: <FiSmartphone />, title: 'Mobile App', value: 'mobile-app', description: 'Native-quality iOS and Android builds', color: '#7c3aed' },
@@ -43,8 +48,6 @@ const steps = [
   { id: 3, label: 'Scope' },
 ];
 
-import SeoWrapper from '../components/SeoWrapper';
-import FAQ from '../components/FAQ';
 
 const CustomOrder = () => {
   const [step, setStep] = useState(1);
@@ -92,18 +95,22 @@ const CustomOrder = () => {
         description="Tell us about your project. We build custom web apps, mobile apps, and AI solutions tailored to your business needs."
         keywords="hire developers, custom software quote, app development cost, software project brief"
       />
-      <div className="max-w-6xl mx-auto px-4 py-16">
+      <div className="max-w-6xl mx-auto px-4 py-20 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-col gap-3 mb-10 text-center"
         >
-          <span className="mx-auto inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-sm font-semibold text-primary-700 shadow-sm">
-            <FiSend /> Start a project
-          </span>
-          <h1 className="section-title">
-            Build with a modern, minimal brief
-          </h1>
+          <div className="mb-6">
+            <SectionLabel>
+              <FiSend className="inline" /> Start a project
+            </SectionLabel>
+          </div>
+          <SectionTitle
+            normalText="Build with a modern, minimal"
+            highlightText="brief"
+            Tag="h1"
+          />
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Share your idea and constraints. We will reply with a project outline, timeline, and team fit within one day.
           </p>

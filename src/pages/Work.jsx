@@ -7,6 +7,8 @@ import { caseStudies } from '../export';
 import SeoWrapper from '../components/SeoWrapper';
 import SchemaJsonLd from '../components/SchemaJsonLd';
 import OptimizedImage from '../components/OptimizedImage';
+import SectionLabel from '../components/SectionLabel';
+import SectionTitle from '../components/SectionTitle';
 
 const Work = () => {
     useEffect(() => {
@@ -42,31 +44,22 @@ const Work = () => {
             <SchemaJsonLd schema={breadcrumbSchema} />
 
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 py-20 overflow-hidden border-b border-slate-200">
+            <section className="relative bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 py-20 md:py-24 overflow-hidden border-b border-slate-200">
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary-100 rounded-full blur-3xl opacity-50"></div>
                     <div className="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-100 rounded-full blur-3xl opacity-40"></div>
                 </div>
 
                 <div className="content-container relative z-10 text-center space-y-4">
-                    <nav aria-label="Breadcrumb" className="mb-4">
+                    {/* <nav aria-label="Breadcrumb" className="mb-4">
                         <ol className="inline-flex items-center gap-2 text-sm text-slate-600">
                             <li><Link to="/" className="hover:text-primary-700">Home</Link></li>
                             <li>/</li>
                             <li className="text-slate-900 font-semibold">Our Work</li>
                         </ol>
-                    </nav>
-                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-semibold tracking-[0.14em] uppercase">
-                        Case Studies
-                    </span>
-                    <motion.h1
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="section-title"
-                    >
-                        Delivering Digital Excellence
-                    </motion.h1>
+                    </nav> */}
+                    <SectionLabel>Case Studies</SectionLabel>
+                    <SectionTitle normalText="Delivering Digital" highlightText="Excellence" Tag="h1" />
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}

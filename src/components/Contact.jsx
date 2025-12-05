@@ -1,6 +1,7 @@
 // Contact.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionLabel from './SectionLabel';
 
 const services = [
   'Web Development',
@@ -23,9 +24,7 @@ const Contact = () => {
     >
       <div className="content-container grid lg:grid-cols-2 gap-10 items-start">
         <div className="space-y-4 text-slate-900">
-          <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-sm font-semibold">
-            Partnership Inquiry
-          </p>
+          <SectionLabel>Partnership Inquiry</SectionLabel>
           <h1 className="section-heading text-left">
             Let's engineer your next breakthrough
           </h1>

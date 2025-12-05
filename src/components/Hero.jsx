@@ -17,7 +17,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(15,23,42,0.04),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(15,23,42,0.05),transparent_25%)]" />
             </div>
 
-            <div className="content-container relative py-16 lg:py-24">
+            <div className="content-container relative py-20 md:py-24">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-6">
                         <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-700 border border-primary-100 text-sm font-semibold">
